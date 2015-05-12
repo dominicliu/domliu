@@ -19,19 +19,19 @@ app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationPro
 ]
 
 app.controller "homeController", ["$scope", ($scope) ->
-	
+	document.title = "Home | Dominic Liu"
 ]
 
 app.controller "skillsController", ["$scope", ($scope) ->
-	
+	document.title = "Skills | Dominic Liu"
 ]
 
 app.controller "portfolioController", ["$scope", ($scope) ->
-	
+	document.title = "Portfolio | Dominic Liu"
 ]
 
 app.controller "contactController", ["$scope", ($scope) ->
-	
+	document.title = "Contact | Dominic Liu"
 ]
 
 app.directive 'ngEnter', ->

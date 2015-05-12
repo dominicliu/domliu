@@ -81,6 +81,9 @@ body {
 		padding-top: 20px;
 		padding-bottom: 20px;
 		background-color: @primary;
+		position: fixed;
+		z-index: 999;
+		width: 100%;
 
 		.white {
 			color: @white;
@@ -102,7 +105,6 @@ body {
 	}
 
 	main {
-		padding-top: 20px;
 		text-align: center;
 
 		#portrait {
@@ -114,6 +116,32 @@ body {
 			width: 100px;
 			height: 100px;
 			margin: 0px auto;
+		}
+
+		.outer {
+			display: table;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+		}
+
+		.middle {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		.inner {
+			margin-left: auto;
+			margin-right: auto; 
+			// width: 500px;
+		}
+
+		.top-offset {
+			padding-top: 90px;
+		}
+
+		p.sub {
+			color: @default;
 		}
 	}
 
