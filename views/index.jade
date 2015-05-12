@@ -8,13 +8,24 @@ block content
 		link(rel='shortcut icon', href='images/favicon.ico')
 		script(src='javascripts/libs/bower_components/jquery/dist/jquery.min.js')
 		script(src='javascripts/libs/bower_components/angular/angular.min.js')
-		link(rel='stylesheet', href='javascripts/libs/bower_components/bootstrap/dist/css/bootstrap.min.css')
+		script(src='javascripts/libs/angular/angular-route.min.js')
+		link(rel='stylesheet', href='stylesheets/css/bootstrap.min.css')
 		script(src='javascripts/libs/bower_components/bootstrap/dist/js/bootstrap.min.js')
 		link(rel='stylesheet', type='text/css', href='stylesheets/css/style.css')
 		script(src='javascripts/libs/bower_components/moment/min/moment.min.js')
 		script(src='javascripts/app.js')
 		link(rel='prefetch', href='images/favicon.ico')
+		base(href="/")
 	body(ng-app='app')
-		| Hooray!
+		header
+			a.white(href="/") Dominic Liu
+			| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			a(href="/") Home
+			a(href="skills") Skills
+			a(href="portfolio") Portfolio
+			a(href="resume") Résumé
+			a(href="contact") Contact
+		main(ng-view)
+
 		script(src='javascripts/libs/webfont.js')
 		script(src='javascripts/fonts.js')

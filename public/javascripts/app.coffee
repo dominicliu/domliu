@@ -1,6 +1,36 @@
-app = angular.module "app", []
+app = angular.module "app", ["ngRoute"]
 
-app.controller "indexController", ["$scope", ($scope) ->
+app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationProvider) ->
+	$routeProvider
+		.when "/",
+			templateUrl: "/templates/home"
+			controller: "homeController"
+		.when "/skills",
+			templateUrl: "/templates/skills"
+			controller: "skillsController"
+		.when "/portfolio",
+			templateUrl: "/templates/portfolio"
+			controller: "portfolioController"
+		.when "/contact",
+			templateUrl: "/templates/contact"
+			controller: "contactController"
+
+	$locationProvider.html5Mode(true)
+]
+
+app.controller "homeController", ["$scope", ($scope) ->
+	
+]
+
+app.controller "skillsController", ["$scope", ($scope) ->
+	
+]
+
+app.controller "portfolioController", ["$scope", ($scope) ->
+	
+]
+
+app.controller "contactController", ["$scope", ($scope) ->
 	
 ]
 

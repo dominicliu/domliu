@@ -6,6 +6,7 @@ cookieParser = require("cookie-parser")
 bodyParser = require("body-parser")
 compression = require("compression")
 routes = require("./routes/index")
+templates = require("./routes/templates")
 app = express()
 
 # view engine setup
@@ -18,7 +19,13 @@ app.use bodyParser.json()
 app.use bodyParser.urlencoded()
 app.use cookieParser()
 app.use express.static(path.join(__dirname, "public"))
+
+app.use "/templates", templates
+
 app.use "/", routes
+app.use "/skills", routes
+app.use "/portfolio", routes
+app.use "/contact", routes
 
 #/ catch 404 and forward to error handler
 app.use (req, res, next) ->

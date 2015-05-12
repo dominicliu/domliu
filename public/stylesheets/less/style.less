@@ -2,6 +2,12 @@
 @gray: #ccc;
 @blue: #407996;
 @blue-light: #90bdd4;
+@default: #95a5a6;
+@primary: #2c3e50;
+@success: #18bc9c;
+@info: #3498db;
+@warning: #f39c12;
+@danger: #e74c3c;
 
 @font-face {
 	font-family: 'Lato';
@@ -39,19 +45,19 @@
 
 }
 
-* {
-	-webkit-border-radius: 0 !important;
-	-moz-border-radius: 0 !important;
-	border-radius: 0 !important;
-}
+// * {
+// 	-webkit-border-radius: 0 !important;
+// 	-moz-border-radius: 0 !important;
+// 	border-radius: 0 !important;
+// }
 
 body, input, select, textarea{
-	font-family:Arial, Helvetica, sans-serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .wf-active {
 	body, input, select, textarea{
-		font-family: "Lato", Arial, Helvetica, sans-serif;
+		font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	}
 }
 
@@ -65,94 +71,140 @@ body {
 		color: @white;
 	}
 
-	h1 {
-		font-size: 32px;
-		font-weight: 700;
-		margin-top: 60px;
-		margin-bottom: 80px;
-	}
-
-	table {
-		margin: 0px auto 60px auto;
-
-		.colon {
-			font-size: 56px;
-			font-weight: 300;
-			color: @gray;
-			padding: 20px;
-		}
-
-		input[type='text'] {
-			padding: 20px 45px;
-			border: none;
-			background-color: transparent;
-			// color: @white;
-			text-align:center;
-			font-size: 52px;
-			font-weight: 300;
-			line-height: 52px;
-			width: 150px;
-
-			&:focus {
-				outline: none;
-			}
-		}
-
-		.caption {
-			color: @gray;
-		}
-	}
-
-	button {
-		background-color: transparent;
-		border: none;
-		// color: @white;
-		font-size: 16px;
-		line-height: 16px;
-		padding: 10px 12px;
-		margin-right: 12px;
-		transition: opacity 0.5s;
-
-		&:focus {
-			outline: none;
-		}
-
-		&:disabled {
-			opacity: 0.3;
-		}
-
-		&:last-child {
-			margin-right: 0px;
-		}
-
-		img.icon {
-			width: 13px;
-			height: 13px;
-			margin-right: 7px;
-		}
-	}
-
-	label {
-		font-size: 16px;
-		font-weight: 400;
-		margin-left: 6px;
-	}
-
-	input[disabled] + label {
-		color: @gray;
-	}
-
-	p.copyright {
-		margin-top: 100px;
-		font-size: 14px;
-		color: @gray;
-	}
-
-	.space {
+	sp {
+		display: block;
 		height: 5px;
 	}
 
-	input.edit-time {
-		width: 70px;
+	header {
+		text-align: center;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		background-color: @primary;
+
+		.white {
+			color: @white;
+			font-weight: 700;
+		}
+
+		a {
+			margin-right: 20px;
+			transition: color 0.3s;
+
+			&:hover, &:active, &:focus {
+				text-decoration: none;
+			}
+
+			&:hover {
+				color: @white;
+			}
+		}
 	}
+
+	main {
+		padding-top: 20px;
+		text-align: center;
+
+		#portrait {
+			background-repeat: no-repeat;
+			background-position: 50%;
+			background-size: cover;
+			overflow: hidden;
+			border-radius: 50%;
+			width: 100px;
+			height: 100px;
+			margin: 0px auto;
+		}
+	}
+
+	// h1 {
+	// 	font-size: 32px;
+	// 	font-weight: 700;
+	// 	margin-top: 60px;
+	// 	margin-bottom: 80px;
+	// }
+
+	// table {
+	// 	margin: 0px auto 60px auto;
+
+	// 	.colon {
+	// 		font-size: 56px;
+	// 		font-weight: 300;
+	// 		color: @gray;
+	// 		padding: 20px;
+	// 	}
+
+	// 	input[type='text'] {
+	// 		padding: 20px 45px;
+	// 		border: none;
+	// 		background-color: transparent;
+	// 		// color: @white;
+	// 		text-align:center;
+	// 		font-size: 52px;
+	// 		font-weight: 300;
+	// 		line-height: 52px;
+	// 		width: 150px;
+
+	// 		&:focus {
+	// 			outline: none;
+	// 		}
+	// 	}
+
+	// 	.caption {
+	// 		color: @gray;
+	// 	}
+	// }
+
+	// button {
+	// 	background-color: transparent;
+	// 	border: none;
+	// 	// color: @white;
+	// 	font-size: 16px;
+	// 	line-height: 16px;
+	// 	padding: 10px 12px;
+	// 	margin-right: 12px;
+	// 	transition: opacity 0.5s;
+
+	// 	&:focus {
+	// 		outline: none;
+	// 	}
+
+	// 	&:disabled {
+	// 		opacity: 0.3;
+	// 	}
+
+	// 	&:last-child {
+	// 		margin-right: 0px;
+	// 	}
+
+	// 	img.icon {
+	// 		width: 13px;
+	// 		height: 13px;
+	// 		margin-right: 7px;
+	// 	}
+	// }
+
+	// label {
+	// 	font-size: 16px;
+	// 	font-weight: 400;
+	// 	margin-left: 6px;
+	// }
+
+	// input[disabled] + label {
+	// 	color: @gray;
+	// }
+
+	// p.copyright {
+	// 	margin-top: 100px;
+	// 	font-size: 14px;
+	// 	color: @gray;
+	// }
+
+	// .space {
+	// 	height: 5px;
+	// }
+
+	// input.edit-time {
+	// 	width: 70px;
+	// }
 }
