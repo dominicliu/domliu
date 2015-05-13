@@ -24,6 +24,25 @@ app.controller "homeController", ["$scope", ($scope) ->
 
 app.controller "skillsController", ["$scope", ($scope) ->
 	document.title = "Skills | Dominic Liu"
+
+	$scope.skills = [
+		{
+			name: "AngularJS"
+			image: "angular.jpg"
+			rating: 4
+			extras: ["Protractor"]
+			links: [
+				{
+					name: "This website"
+					link: "/"
+				}
+				{
+					name: "Timer"
+					link: "http://timer.initiatorapp.com/"
+				}
+			]
+		}
+	]
 ]
 
 app.controller "portfolioController", ["$scope", ($scope) ->
@@ -55,3 +74,40 @@ app.directive 'makeFocus', ($timeout) ->
 				$timeout (->
 					elem[0].focus()
 				), 0, false
+
+app.directive 'starRating', ->
+	{
+		restrict: 'EA'
+		template: '<ul class=\'rating\' ng-class=\'{readonly: readonly}\'>
+						<li ng-repeat=\'star in stars\' ng-class=\'star\' ng-click=\'toggle($index)\'>
+							<i class=\'fa fa-star\'></i>
+						</li>
+					</ul>'
+		scope:
+			ratingValue: '=ngModel'
+			max: '=?'
+			onRatingSelected: '&?'
+			readonly: '=?'
+		link: (scope, elem, attrs) ->
+
+			updateStars = ->
+				scope.stars = []
+				i = 0
+				while i < scope.max
+					scope.stars.push filled: i < scope.ratingValue
+					i++
+				return
+
+			if scope.max == undefined
+				scope.max = 5
+
+			scope.toggle = (index) ->
+				if scope.readonly == undefined or scope.readonly == false
+					scope.ratingValue = index + 1
+					scope.onRatingSelected rating: index + 1
+
+			scope.$watch 'ratingValue', (oldVal, newVal) ->
+				if newVal
+					updateStars()
+
+	}

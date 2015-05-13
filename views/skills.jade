@@ -1,2 +1,17 @@
 .top-offset
-	h1 Skills
+	.container
+		h1 Skills
+		.row
+			.col-sm-4.col-md-3.col-lg-2(ng-repeat="skill in skills")
+				.skill
+					img(src="/images/skills/{{skill.image}}")
+					div
+						h3.name AngularJS
+						star-rating(ng-model="skill.rating" readonly="true")
+						p(ng-repeat="extra in skill.extras")
+							span.fa.fa-plus
+							| &nbsp;&nbsp;&nbsp;{{extra}}
+						p(ng-repeat="link in skill.links")
+							a(href="{{link.link}}" target="_blank")
+								span.fa.fa-link
+								| &nbsp;&nbsp;{{link.name}}
