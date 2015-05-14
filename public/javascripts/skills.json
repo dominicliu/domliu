@@ -1,45 +1,4 @@
-app = angular.module "app", ["ngRoute", "ngAnimate"]
-
-app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationProvider) ->
-	$routeProvider
-		.when "/",
-			templateUrl: "/templates/home"
-			controller: "homeController"
-		.when "/skills",
-			templateUrl: "/templates/skills"
-			controller: "skillsController"
-		.when "/portfolio",
-			templateUrl: "/templates/portfolio"
-			controller: "portfolioController"
-		.when "/contact",
-			templateUrl: "/templates/contact"
-			controller: "contactController"
-
-	$locationProvider.html5Mode(true)
-]
-
-app.controller "appController", ["$scope", "$timeout", ($scope, $timeout) ->
-	$scope.animationActive = false
-
-	$timeout ->
-		$scope.animationActive = true
-	, 10
-]
-
-app.controller "homeController", ["$scope", ($scope) ->
-	document.title = "Home | Dominic Liu"
-]
-
-app.controller "skillsController", ["$scope", "$timeout", ($scope, $timeout) ->
-	document.title = "Skills | Dominic Liu"
-
-	$scope.skills = []
-	$scope.search = ""
-	$scope.searchFilter = (skill) ->
-		skill.name.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
-
-	skills = [
-		{
+{
 			name: "AngularJS"
 			image: "angular.jpg"
 			rating: 3
@@ -268,7 +227,7 @@ app.controller "skillsController", ["$scope", "$timeout", ($scope, $timeout) ->
 		{
 			name: "After Effects"
 			image: "after_effects.jpg"
-			rating: 3
+			rating: 4
 			extras: []
 			links: [
 				{
@@ -277,88 +236,3 @@ app.controller "skillsController", ["$scope", "$timeout", ($scope, $timeout) ->
 				}
 			]
 		}
-		{
-			name: "Cinematography"
-			image: "film.jpg"
-			rating: 3
-			extras: []
-			links: [
-				{
-					name: "Maple Style"
-					link: "http://v.youku.com/v_show/id_XNDkzMDA0ODY4.html"
-				}
-			]
-		}
-	]
-
-	$timeout ->
-		$scope.skills = skills
-	, 50
-]
-
-app.controller "portfolioController", ["$scope", ($scope) ->
-	document.title = "Portfolio | Dominic Liu"
-]
-
-app.controller "contactController", ["$scope", ($scope) ->
-	document.title = "Contact | Dominic Liu"
-]
-
-app.directive 'ngEnter', ->
-	(scope, element, attrs) ->
-		element.bind 'keydown keypress', (event) ->
-			if event.which == 13
-				scope.$apply ->
-					scope.$eval attrs.ngEnter, 'event': event
-				event.preventDefault()
-
-app.directive 'ngAutoFocus', ->
-	(scope, element, attrs) ->
-		element[0].focus()
-		element[0].selectionStart = element[0].selectionEnd = element[0].value.length # focus at the end
-
-app.directive 'makeFocus', ($timeout) ->
-	'use strict'
-	(scope, elem, attrs) ->
-		scope.$watch attrs.makeFocus, (newVal) ->
-			if newVal
-				$timeout (->
-					elem[0].focus()
-				), 0, false
-
-app.directive 'starRating', ->
-	{
-		restrict: 'EA'
-		template: '<ul class=\'rating\' ng-class=\'{readonly: readonly}\'>
-						<li ng-repeat=\'star in stars\' ng-class=\'star\' ng-click=\'toggle($index)\'>
-							<i class=\'fa fa-star\'></i>
-						</li>
-					</ul>'
-		scope:
-			ratingValue: '=ngModel'
-			max: '=?'
-			onRatingSelected: '&?'
-			readonly: '=?'
-		link: (scope, elem, attrs) ->
-
-			updateStars = ->
-				scope.stars = []
-				i = 0
-				while i < scope.max
-					scope.stars.push filled: i < scope.ratingValue
-					i++
-				return
-
-			if scope.max == undefined
-				scope.max = 5
-
-			scope.toggle = (index) ->
-				if scope.readonly == undefined or scope.readonly == false
-					scope.ratingValue = index + 1
-					scope.onRatingSelected rating: index + 1
-
-			scope.$watch 'ratingValue', (oldVal, newVal) ->
-				if newVal
-					updateStars()
-
-	}

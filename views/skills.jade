@@ -1,8 +1,14 @@
 .top-offset
 	.container
-		h1 Skills
+		h1
+			span.fa.fa-cogs
+			| &nbsp;&nbsp;Skills
+		p
+			input(type="text", class="form-control" ng-model="search", placeholder="Search")
+		sp
+		sp
 		.row
-			.col-sm-4.col-md-3.col-lg-2(ng-repeat="skill in skills")
+			.col-sm-4.col-md-3.col-lg-2(ng-repeat="skill in skills | filter : searchFilter")
 				.skill
 					img(src="/images/skills/{{skill.image}}")
 					div

@@ -9,6 +9,7 @@ block content
 		script(src='javascripts/libs/bower_components/jquery/dist/jquery.min.js')
 		script(src='javascripts/libs/bower_components/angular/angular.min.js')
 		script(src='javascripts/libs/angular/angular-route.min.js')
+		script(src='javascripts/libs/angular/angular-animate.min.js')
 		link(rel='stylesheet', href='stylesheets/css/bootstrap.min.css')
 		script(src='javascripts/libs/bower_components/bootstrap/dist/js/bootstrap.min.js')
 		link(rel='stylesheet', type='text/css', href='stylesheets/css/style.css')
@@ -17,15 +18,26 @@ block content
 		script(src='javascripts/app.js')
 		link(rel='prefetch', href='images/favicon.ico')
 		base(href="/")
-	body(ng-app='app')
+	body(ng-app='app' ng-controller="appController")
 		header
-			a.white(href="/") Dominic Liu
-			| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			a(href="/") Home
-			a(href="skills") Skills
-			a(href="portfolio") Portfolio
-			a(href="resume") Résumé
-			a(href="contact") Contact
+			div(ng-if="animationActive")
+				a.white(href="/") Dominic Liu
+				| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				a(href="/")
+					span.fa.fa-home
+					| &nbsp;&nbsp;Home
+				a(href="skills")
+					span.fa.fa-cogs
+					| &nbsp;&nbsp;Skills
+				a(href="portfolio")
+					span.fa.fa-briefcase
+					| &nbsp;&nbsp;Portfolio
+				a(href="resume")
+					span.fa.fa-file-text
+					| &nbsp;&nbsp;Résumé
+				a(href="contact")
+					span.fa.fa-envelope
+					| &nbsp;&nbsp;Contact
 		main(ng-view)
 
 		script(src='javascripts/libs/webfont.js')
