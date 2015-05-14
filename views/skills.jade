@@ -6,7 +6,7 @@
 				.skill
 					img(src="/images/skills/{{skill.image}}")
 					div
-						h3.name AngularJS
+						h3.name {{skill.name}}
 						star-rating(ng-model="skill.rating" readonly="true")
 						p(ng-repeat="extra in skill.extras")
 							span.fa.fa-plus

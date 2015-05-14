@@ -29,7 +29,7 @@ app.controller "skillsController", ["$scope", ($scope) ->
 		{
 			name: "AngularJS"
 			image: "angular.jpg"
-			rating: 4
+			rating: 3
 			extras: ["Protractor"]
 			links: [
 				{
@@ -41,6 +41,134 @@ app.controller "skillsController", ["$scope", ($scope) ->
 					link: "http://timer.initiatorapp.com/"
 				}
 			]
+		}
+		{
+			name: "Ember.js"
+			image: "ember.jpg"
+			rating: 5
+			extras: []
+			links: []
+		}
+		{
+			name: "CoffeeScript"
+			image: "coffeescript.jpg"
+			rating: 5
+			extras: []
+			links: []
+		}
+		{
+			name: "Node.js"
+			image: "node.jpg"
+			rating: 5
+			extras: ["Express"]
+			links: [
+				{
+					name: "Initiator"
+					link: "https://initiatorapp.com/"
+				}
+				{
+					name: "DecisiveMe"
+					link: "https://decisiveme.com/"
+				}
+			]
+		}
+		{
+			name: "PHP"
+			image: "php.jpg"
+			rating: 5
+			extras: []
+			links: []
+		}
+		{
+			name: "MySQL"
+			image: "mysql.jpg"
+			rating: 5
+			extras: []
+			links: []
+		}
+		{
+			name: "MongoDB"
+			image: "mongodb.jpg"
+			rating: 3
+			extras: []
+			links: []
+		}
+		{
+			name: "jQuery"
+			image: "jquery.jpg"
+			rating: 5
+			extras: []
+			links: []
+		}
+		{
+			name: "Less"
+			image: "less.jpg"
+			rating: 5
+			extras: []
+			links: []
+		}
+		{
+			name: "Graphic Design"
+			image: "graphic_design.jpg"
+			rating: 4
+			extras: []
+			links: []
+		}
+		{
+			name: "Web Design"
+			image: "web_design.jpg"
+			rating: 3
+			extras: []
+			links: []
+		}
+		{
+			name: "Photoshop"
+			image: "photoshop.jpg"
+			rating: 5
+			extras: []
+			links: []
+		}
+		{
+			name: "Illustrator"
+			image: "Illustrator.jpg"
+			rating: 2
+			extras: []
+			links: []
+		}
+		{
+			name: "InDesign"
+			image: "indesign.jpg"
+			rating: 5
+			extras: []
+			links: []
+		}
+		{
+			name: "Premiere Pro"
+			image: "premiere.jpg"
+			rating: 5
+			extras: []
+			links: []
+		}
+		{
+			name: "After Effects"
+			image: "after_effects.jpg"
+			rating: 4
+			extras: []
+			links: []
+		}
+		{
+			name: "Cinematography"
+			image: "film.jpg"
+			rating: 3
+			extras: []
+			links: []
+		}
+		{
+			name: "Photography"
+			image: "photography.jpg"
+			rating: 5
+			extras: []
+			links: []
 		}
 	]
 ]
