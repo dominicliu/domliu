@@ -293,7 +293,7 @@ app.controller "skillsController", ["$scope", "$timeout", ($scope, $timeout) ->
 
 	$timeout ->
 		$scope.skills = skills
-	, 50
+	, 10
 ]
 
 app.controller "portfolioController", ["$scope", ($scope) ->

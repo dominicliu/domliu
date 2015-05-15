@@ -78,6 +78,10 @@ body {
 		height: 5px;
 	}
 
+	a:hover, a:active, a:focus {
+		text-decoration: none;
+	}
+
 	header {
 		text-align: center;
 		position: fixed;
@@ -104,10 +108,6 @@ body {
 			a {
 				margin-right: 25px;
 				transition: color 0.3s;
-
-				&:hover, &:active, &:focus {
-					text-decoration: none;
-				}
 
 				&:hover {
 					color: @white;
@@ -222,15 +222,20 @@ body {
 				a {
 					transition: color 0.3s;
 
-					&:hover, &:active, &:focus {
-						text-decoration: none;
-					}
-
 					&:hover {
 						color: @success-darker;
 					}
 				}
 			}
+		}
+
+		.row.col-bottom>div {
+			margin-bottom: 10px;
+		}
+
+		span.align-to-icon {
+			position: relative;
+			bottom: 5px;
 		}
 
 		.ng-enter {
@@ -271,6 +276,32 @@ body {
 		   must be set to 0 to avoid an accidental CSS inheritance */
 		  transition-duration: 0s;
 		}
+
+		// ng-view animation
+
+		// position: absolute;
+		// width: 100%;
+		// height: 100%;
+
+		// &.ng-enter {
+		// 	opacity:0;
+		// 	transition:0.3s linear all;
+		// 	z-index:8888;
+		// }
+
+		// &.ng-enter.ng-enter-active {
+		// 	opacity:1;
+		// }
+
+		// &.ng-leave {
+		// 	opacity:1;
+		// 	transition:0.3s linear all;
+		// 	z-index:9999;
+		// }
+
+		// &.ng-leave.ng-leave-active {
+		// 	opacity:0;
+		// }
 	}
 
 	.rating {
