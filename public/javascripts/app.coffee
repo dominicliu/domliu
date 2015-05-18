@@ -212,7 +212,7 @@ skills = [
 	}
 	{
 		name: "Illustrator"
-		image: "Illustrator.jpg"
+		image: "illustrator.jpg"
 		rating: 2
 		extras: []
 		links: [
