@@ -227,7 +227,12 @@ skills = [
 		image: "indesign.jpg"
 		rating: 5
 		extras: []
-		links: []
+		links: [
+			{
+				name: "My Résumé"
+				link: "/Mingxi_Liu_Résumé.pdf"
+			}
+		]
 	}
 	{
 		name: "Premiere Pro"
@@ -271,7 +276,7 @@ works = [
 	{
 		name: "Stopwatch Timer"
 		image: "timer.png"
-		skills: ["AngularJS", "Less"]
+		skills: ["AngularJS", "Less", "CoffeeScript", "Bootstrap", "Web Design"]
 		links: [{
 			name: "Website"
 			link: "http://timer.initiatorapp.com/"
@@ -280,7 +285,7 @@ works = [
 	{
 		name: "DecisiveMe Decision Making Tool"
 		image: "decisiveme.png"
-		skills: ["Ember.js", "Node.js", "MongoDB"]
+		skills: ["Ember.js", "Node.js", "MongoDB", "CoffeeScript", "Bootstrap"]
 		links: [{
 			name: "Website"
 			link: "https://decisiveme.com/"
@@ -289,7 +294,7 @@ works = [
 	{
 		name: "Initiator Project Management System"
 		image: "initiator.png"
-		skills: ["Ember.js", "Node.js", "MySQL"]
+		skills: ["Ember.js", "Node.js", "MySQL", "CoffeeScript", "Bootstrap", "Web Design"]
 		links: [{
 			name: "Website"
 			link: "https://initiatorapp.com/"
@@ -298,7 +303,7 @@ works = [
 	{
 		name: "MapleKit Project Management System"
 		image: "maplekit.png"
-		skills: ["PHP", "MySQL", "jQuery"]
+		skills: ["PHP", "MySQL", "jQuery", "Web Design"]
 		links: [{
 			name: "Website"
 			link: "http://mk.youngmaple.ca/"
@@ -307,32 +312,32 @@ works = [
 	{
 		name: "Eiffel Tower, Paris"
 		image: "eiffel_tower.jpg"
-		skills: ["Photography"]
+		skills: ["Photography", "Photoshop"]
 	}
 	{
 		name: "Flower on the Lake"
 		image: "lake_flower.jpg"
-		skills: ["Photography"]
+		skills: ["Photography", "Photoshop"]
 	}
 	{
 		name: "New Town Hall, Munich"
 		image: "munich_tower.jpg"
-		skills: ["Photography"]
+		skills: ["Photography", "Photoshop"]
 	}
 	{
 		name: "Road in the Sunset"
 		image: "sunset_road.jpg"
-		skills: ["Photography"]
+		skills: ["Photography", "Photoshop"]
 	}
 	{
 		name: "Valley in the Clouds"
 		image: "valley.jpg"
-		skills: ["Photography"]
+		skills: ["Photography", "Photoshop"]
 	}
 	{
 		name: "The Green Valley"
 		image: "valley_2.jpg"
-		skills: ["Photography"]
+		skills: ["Photography", "Photoshop"]
 	}
 	{
 		name: "Me as a Cinematographer"
@@ -342,48 +347,56 @@ works = [
 	{
 		name: "Maple Storm Magazine Contents"
 		image: "maple_storm_contents.jpg"
-		skills: ["Graphic Design"]
+		skills: ["Graphic Design", "InDesign"]
 	}
 	{
 		name: "Maple Storm Magazine Poster"
 		image: "maple_storm_poster_10.jpg"
-		skills: ["Graphic Design"]
+		skills: ["Graphic Design", "Photoshop"]
 	}
 	{
 		name: "Maple Storm Magazine Wallpaper"
 		image: "maple_storm_universe.jpg"
-		skills: ["Graphic Design"]
+		skills: ["Graphic Design", "Photoshop"]
 	}
 	{
 		name: "Maple Storm Magazine Cover"
 		image: "maple_strom_10.jpg"
-		skills: ["Graphic Design"]
+		skills: ["Graphic Design", "Photoshop"]
 	}
 	{
 		name: "Maple Storm Magazine Cover"
 		image: "maple_strom_13.jpg"
-		skills: ["Graphic Design"]
+		skills: ["Graphic Design", "Photoshop"]
 	}
 	{
 		name: "Maple Storm Magazine Cover"
 		image: "maple_strom_14.jpg"
-		skills: ["Graphic Design"]
+		skills: ["Graphic Design", "Photoshop"]
 	}
 	{
 		name: "Maple Storm Magazine Cover"
 		image: "maple_strom_15.jpg"
-		skills: ["Graphic Design"]
+		skills: ["Graphic Design", "Photoshop"]
 	}
 	{
 		name: "Maple Storm Magazine Cover"
 		image: "maple_strom_16.jpg"
-		skills: ["Graphic Design"]
+		skills: ["Graphic Design", "Photoshop"]
 	}
 ]
 
+angular.forEach skills, (skill) ->
+	skill.hasWorks = false
 
+angular.forEach works, (work) ->
+	angular.forEach work.skills, (skill) ->
+		matchedSkill = _.findWhere skills,
+			name: skill
+		if matchedSkill
+			matchedSkill.hasWorks = true
 
-app = angular.module "app", ["ngRoute", "ngAnimate"]
+app = angular.module "app", ["ngRoute", "ngAnimate", "wu.masonry"]
 
 app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationProvider) ->
 	$routeProvider
@@ -403,8 +416,13 @@ app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationPro
 	$locationProvider.html5Mode(true)
 ]
 
-app.controller "appController", ["$scope", "$timeout", ($scope, $timeout) ->
+app.controller "appController", ["$scope", "$timeout", "$location", ($scope, $timeout, $location) ->
 	$scope.animationActive = false
+
+	$scope.isActive = (path) ->
+		$location.path() is path
+	$scope.toggleNavbar = ->
+		$("button.navbar-toggle").click()
 
 	$timeout ->
 		$scope.animationActive = true
@@ -428,20 +446,23 @@ app.controller "skillsController", ["$scope", "$timeout", "$routeParams", ($scop
 	, 50
 ]
 
-app.controller "portfolioController", ["$scope", "$timeout", ($scope, $timeout) ->
+app.controller "portfolioController", ["$scope", "$timeout", "$routeParams", ($scope, $timeout, $routeParams) ->
 	document.title = "Portfolio | Dominic Liu"
 
 	$scope.works = []
-	$scope.search = ""
+	$scope.search = $routeParams.search or ""
 	$scope.searchFilter = (work) ->
-		work.name.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
+		matchedSkills = []
+		angular.forEach work.skills, (skill) ->
+			@push skill if skill.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
+		, matchedSkills
+		matchedSkills.length or work.name.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
 	$scope.currentWork = null
 
 	$scope.images = []
 	angular.forEach works, (work) ->
 		@push "/images/portfolio/" + work.image
 	, $scope.images
-	console.log $scope.images
 
 	$timeout ->
 		$scope.works = works

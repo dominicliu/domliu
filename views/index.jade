@@ -15,6 +15,11 @@ block content
 		link(rel='stylesheet', type='text/css', href='/stylesheets/css/style.css')
 		link(rel='stylesheet', type='text/css', href='/stylesheets/css/font-awesome.min.css')
 		script(src='/javascripts/libs/bower_components/moment/min/moment.min.js')
+		script(src='/javascripts/libs/underscore-min.js')
+
+		script(src='/javascripts/libs/bower_components/masonry/dist/masonry.pkgd.min.js')
+		script(src='/javascripts/libs/bower_components/imagesloaded/imagesloaded.pkgd.min.js')
+		script(src='/javascripts/libs/bower_components/angular-masonry/angular-masonry.js')
 
 		//- script(src='/javascripts/libs/angular/angular-touch.min.js')
 		//- link(rel='stylesheet', type='text/css', href='/javascripts/libs/bower_components/angular-loading-bar/build/loading-bar.min.css')
@@ -28,26 +33,45 @@ block content
 
 		script(src='/javascripts/app.js')
 		base(href="/")
+
 	body(ng-app='app' ng-controller="appController")
-		header
-			div(ng-if="animationActive")
-				a.white(href="/") Dominic Liu
-				| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				a(href="/")
-					span.fa.fa-home
-					| &nbsp;&nbsp;Home
-				a(href="skills")
-					span.fa.fa-cogs
-					| &nbsp;&nbsp;Skills
-				a(href="portfolio")
-					span.fa.fa-briefcase
-					| &nbsp;&nbsp;Portfolio
-				a(href="/Mingxi_Liu_Résumé.pdf", target="_blank")
-					span.fa.fa-file-text
-					| &nbsp;&nbsp;Résumé
-				a(href="contact")
-					span.fa.fa-envelope
-					| &nbsp;&nbsp;Contact
+		nav.navbar.navbar-default(ng-if="animationActive")
+			.container
+					// Brand and toggle get grouped for better mobile display
+					.navbar-header
+						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#menu')
+							span.sr-only Toggle navigation
+							i.fa.fa-bars
+						a.navbar-brand(href='/') Dominic Liu
+					// Collect the nav links, forms, and other content for toggling
+					#menu.collapse.navbar-collapse
+						ul.nav.navbar-nav.navbar-right
+							li
+								a.menu-item(href="/", ng-class="{active: isActive('/')}", ng-click="toggleNavbar()")
+									span.fa.fa-home
+									| &nbsp;&nbsp;Home
+							li
+								a.menu-item(href="/skills", ng-class="{active: isActive('/skills')}", ng-click="toggleNavbar()")
+									span.fa.fa-cogs
+									| &nbsp;&nbsp;Skills
+							li
+								a.menu-item(href="/portfolio", ng-class="{active: isActive('/portfolio')}", ng-click="toggleNavbar()")
+									span.fa.fa-briefcase
+									| &nbsp;&nbsp;Portfolio
+							li
+								a.menu-item(href="/Mingxi_Liu_Résumé.pdf", target="_blank", ng-click="toggleNavbar()")
+									span.fa.fa-file-text
+									| &nbsp;&nbsp;Résumé
+							li
+								a.menu-item(href="/contact", ng-class="{active: isActive('/contact')}", ng-click="toggleNavbar()")
+									span.fa.fa-envelope
+									| &nbsp;&nbsp;Contact
+		//- header
+		//- 	div
+		//- 		a.white(href="/") Dominic Liu
+		//- 		| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				
 		main(ng-view)
 
 		script(src='javascripts/libs/webfont.js')

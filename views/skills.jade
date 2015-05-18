@@ -10,7 +10,7 @@
 		.row
 			.col-sm-3.col-lg-2(ng-repeat="skill in skills | filter : searchFilter")
 				.skill
-					img(src="/images/skills/{{skill.image}}")
+					img(ng-src="/images/skills/{{skill.image}}")
 					div
 						h3.name {{skill.name}}
 						star-rating(ng-model="skill.rating" readonly="true")
@@ -21,3 +21,7 @@
 							a(href="{{link.link}}" target="_blank")
 								span.fa.fa-link
 								| &nbsp;&nbsp;{{link.name}}
+						p(ng-if="skill.hasWorks")
+							a(href="/portfolio/?search={{skill.name}}")
+								span.fa.fa-briefcase
+								| &nbsp;&nbsp;Portfolio

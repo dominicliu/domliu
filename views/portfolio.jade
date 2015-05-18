@@ -7,8 +7,8 @@
 			input(type="text", class="form-control" ng-model="search", placeholder="Search")
 		sp
 		sp
-		.row
-			.col-sm-6.col-md-4.col-lg-3(ng-repeat="work in works | filter : searchFilter")
+		.row(masonry)
+			.col-sm-6.col-md-4.col-lg-3.masonry-brick(ng-repeat="work in works | filter : searchFilter")
 				.work
 					a.zoomIn(href="/images/portfolio/{{work.image}}", data-lightbox="portfolio", data-title="{{work.name}}")
 						img(ng-src="/images/portfolio/{{work.image}}")

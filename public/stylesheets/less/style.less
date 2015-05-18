@@ -86,47 +86,63 @@ body {
 		max-width: 100%;
 	}
 
-	header {
-		text-align: center;
+	nav.navbar {
+		// text-align: center;
 		position: fixed;
 		z-index: 999;
 		width: 100%;
 		overflow: hidden;
-		
-		&>div {
-			padding-top: 20px;
-			padding-bottom: 20px;
-			background-color: @primary;
-			position: relative;
+
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
 
 		/* Set our transitions up. */
 		-webkit-transition: all linear 0.5s;
 		-moz-transition: all linear 0.5s;
 		transition: all linear 0.5s;
-
-			.white {
-				color: @white;
-				font-weight: 700;
-			}
-
-			a {
-				margin-right: 25px;
-				transition: color 0.3s;
-
-				&:hover {
-					color: @white;
-				}
-			}
-		
+	
 		&.ng-enter {
-			top: -50px;
+			// top: -50px;
 			opacity: 0;
 		}
 		
 		&.ng-enter.ng-enter-active {
-			top: 0px;
+			// top: 0px;
 			opacity: 1;
 		}
+		
+		&>div {
+			// padding-top: 20px;
+			// padding-bottom: 20px;
+			background-color: @primary;
+			position: relative;
+
+			.navbar-brand {
+				color: @white;
+				font-weight: 700;
+			}
+
+			button.navbar-toggle {
+				color: @white;
+			}
+
+			a {
+				transition: color 0.3s;
+
+				&.menu-item {
+					// margin-right: 25px;
+					color: @success;
+
+					&:hover {
+						color: @white;
+					}
+
+					&.active {
+						color: @white;
+					}
+				}
+			}
 		}
 	}
 
@@ -229,7 +245,7 @@ body {
 
 			&>div {
 				@media(min-width: 768px) {
-					height: 156px;
+					height: 180px;
 				}
 
 				.name {
