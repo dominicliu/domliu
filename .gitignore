@@ -33,7 +33,9 @@ public/javascripts/libs/bower_components
 # build files
 public/javascripts/fonts.js
 public/javascripts/app.js
-public/stylesheets/css/style.css
+public/javascripts/app.min.js
+public/javascripts/app.min.js.map
+public/stylesheets/css/style.min.css
 
 *.sublime-project
 *.sublime-workspace

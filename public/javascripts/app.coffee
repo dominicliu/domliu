@@ -422,7 +422,7 @@ app.controller "appController", ["$scope", "$timeout", "$location", ($scope, $ti
 	$scope.isActive = (path) ->
 		$location.path() is path
 	$scope.toggleNavbar = ->
-		$("button.navbar-toggle").click()
+		$("button.navbar-toggle:visible").click()
 
 	$timeout ->
 		$scope.animationActive = true

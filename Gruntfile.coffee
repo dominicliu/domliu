@@ -11,6 +11,11 @@ module.exports = (grunt) ->
 				tasks: ["less:compile"]
 				options:
 					atBegin: true
+			uglify:
+				files: ["public/javascripts/app.js"]
+				tasks: ["uglify:js"]
+				options:
+					atBegin: true
 		coffee:
 			compile:
 				expand: true,
@@ -21,18 +26,25 @@ module.exports = (grunt) ->
 				ext: '.js'
 				options:
 					bare: true
-
+		uglify:
+			js:
+				files:
+					"public/javascripts/app.min.js": "public/javascripts/app.js"
+				options:
+					sourceMap: true
 		dirs:
 			less: "public/stylesheets/less"
 		
 		less:
 			compile:
 				files:
-					"public/stylesheets/css/style.css": "<%= dirs.less %>/style.less"
+					"public/stylesheets/css/style.min.css": "<%= dirs.less %>/style.less"
 				options:
 					cleancss: true
+					compress: true
 
 	grunt.loadNpmTasks "grunt-contrib-coffee"
 	grunt.loadNpmTasks "grunt-contrib-watch"
 	grunt.loadNpmTasks "grunt-contrib-less"
-	grunt.registerTask "build", ["coffee:compile", "less:compile"]
+	grunt.loadNpmTasks('grunt-contrib-uglify')
+	grunt.registerTask "build", ["coffee:compile", "less:compile", "uglify:js"]
