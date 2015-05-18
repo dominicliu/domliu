@@ -15,6 +15,17 @@ block content
 		link(rel='stylesheet', type='text/css', href='/stylesheets/css/style.css')
 		link(rel='stylesheet', type='text/css', href='/stylesheets/css/font-awesome.min.css')
 		script(src='/javascripts/libs/bower_components/moment/min/moment.min.js')
+
+		//- script(src='/javascripts/libs/angular/angular-touch.min.js')
+		//- link(rel='stylesheet', type='text/css', href='/javascripts/libs/bower_components/angular-loading-bar/build/loading-bar.min.css')
+		//- script(src='/javascripts/libs/bower_components/angular-loading-bar/build/loading-bar.min.js')
+		//- script(src='/javascripts/libs/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
+		//- link(rel='stylesheet', type='text/css', href='/javascripts/libs/angular-bootstrap-lightbox.min.css')
+		//- script(src='/javascripts/libs/angular-bootstrap-lightbox.min.js')
+
+		link(rel='stylesheet', type='text/css', href='/javascripts/libs/lightbox/css/lightbox.css')
+		script(src='/javascripts/libs/lightbox/js/lightbox.min.js')
+
 		script(src='/javascripts/app.js')
 		base(href="/")
 	body(ng-app='app' ng-controller="appController")
@@ -31,7 +42,7 @@ block content
 				a(href="portfolio")
 					span.fa.fa-briefcase
 					| &nbsp;&nbsp;Portfolio
-				a(href="resume")
+				a(href="/Mingxi_Liu_Résumé.pdf", target="_blank")
 					span.fa.fa-file-text
 					| &nbsp;&nbsp;Résumé
 				a(href="contact")

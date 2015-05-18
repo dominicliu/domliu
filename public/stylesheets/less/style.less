@@ -82,6 +82,10 @@ body {
 		text-decoration: none;
 	}
 
+	img {
+		max-width: 100%;
+	}
+
 	header {
 		text-align: center;
 		position: fixed;
@@ -180,7 +184,7 @@ body {
 			}
 		}
 
-		.skill {
+		.island {
 			text-align: left;
 			// height: 289px;
 
@@ -199,20 +203,11 @@ body {
 				padding: 10px 15px 5px 15px;
 				font-size: 0.9em;
 
-				@media(min-width: 768px) {
-					height: 156px;
-				}
-
 				.name {
 					margin-top: 3px;
 					margin-bottom: 0px;
-					font-size: 24px;
 					word-wrap: break-word;
-				}
-
-				star-rating ul {
-					margin-top: 6px;
-					margin-bottom: 10px;
+					// font-weight: bold;
 				}
 
 				p {
@@ -225,6 +220,39 @@ body {
 					&:hover {
 						color: @success-darker;
 					}
+				}
+			}
+		}
+
+		.skill {
+			.island();
+
+			&>div {
+				@media(min-width: 768px) {
+					height: 156px;
+				}
+
+				.name {
+					font-size: 22px;
+				}
+
+				star-rating ul {
+					margin-top: 6px;
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		.work {
+			.island();
+
+			.zoomIn {
+				cursor: zoom-in;
+			}
+
+			&>div {
+				.name {
+					font-size: 20px;
 				}
 			}
 		}

@@ -1,4 +1,26 @@
 .top-offset
-	h1
-		span.fa.fa-briefcase
-		| &nbsp;&nbsp;Portfolio
+	.container
+		h1
+			span.fa.fa-briefcase
+			| &nbsp;&nbsp;Portfolio
+		p
+			input(type="text", class="form-control" ng-model="search", placeholder="Search")
+		sp
+		sp
+		.row
+			.col-sm-6.col-md-4.col-lg-3(ng-repeat="work in works | filter : searchFilter")
+				.work
+					a.zoomIn(href="/images/portfolio/{{work.image}}", data-lightbox="portfolio", data-title="{{work.name}}")
+						img(ng-src="/images/portfolio/{{work.image}}")
+					div
+						h3.name {{work.name}}
+						sp
+						sp
+						p(ng-repeat="link in work.links")
+							a(href="{{link.link}}" target="_blank")
+								span.fa.fa-link
+								| &nbsp;&nbsp;&nbsp;&nbsp;{{link.name}}
+						p(ng-repeat="skill in work.skills")
+							a(href="/skills?search={{skill}}")
+								span.fa.fa-cogs
+								| &nbsp;&nbsp;&nbsp;{{skill}}
