@@ -7,6 +7,7 @@ bodyParser = require("body-parser")
 compression = require("compression")
 routes = require("./routes/index")
 templates = require("./routes/templates")
+api = require("./routes/api")
 app = express()
 
 # view engine setup
@@ -21,6 +22,7 @@ app.use cookieParser()
 app.use express.static(path.join(__dirname, "public"))
 
 app.use "/templates", templates
+app.use "/api", api
 
 app.use "/", routes
 app.use "/skills", routes
