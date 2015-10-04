@@ -1,21 +1,22 @@
 app = angular.module "app", ["ngRoute", "ngAnimate", "wu.masonry"]
 
-app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationProvider) ->
-	$routeProvider
-		.when "/",
-			templateUrl: "/templates/home"
-			controller: "homeController"
-		.when "/skills",
-			templateUrl: "/templates/skills"
-			controller: "skillsController"
-		.when "/portfolio",
-			templateUrl: "/templates/portfolio"
-			controller: "portfolioController"
-		.when "/contact",
-			templateUrl: "/templates/contact"
-			controller: "contactController"
+app.config ["$routeProvider", "$locationProvider",
+	($routeProvider, $locationProvider) ->
+		$routeProvider
+			.when "/",
+				templateUrl: "/templates/home"
+				controller: "homeController"
+			.when "/skills",
+				templateUrl: "/templates/skills"
+				controller: "skillsController"
+			.when "/portfolio",
+				templateUrl: "/templates/portfolio"
+				controller: "portfolioController"
+			.when "/contact",
+				templateUrl: "/templates/contact"
+				controller: "contactController"
 
-	$locationProvider.html5Mode(true)
+		$locationProvider.html5Mode(true)
 ]
 
 app.factory "utils", ->
@@ -24,61 +25,64 @@ app.factory "utils", ->
 			document.title = "#{title} | Dominic Liu"
 	}
 
-app.controller "appController", ["$scope", "$timeout", "$location", ($scope, $timeout, $location) ->
-	$scope.animationActive = false
+app.controller "appController", ["$scope", "$timeout", "$location",
+	($scope, $timeout, $location) ->
+		$scope.animationActive = false
 
-	$scope.isActive = (path) ->
-		$location.path() is path
-	$scope.toggleNavbar = ->
-		$("button.navbar-toggle:visible").click()
-		return
+		$scope.isActive = (path) ->
+			$location.path() is path
+		$scope.toggleNavbar = ->
+			$("button.navbar-toggle:visible").click()
+			return
 
-	$timeout ->
-		$scope.animationActive = true
-	, 10
+		$timeout ->
+			$scope.animationActive = true
+		, 10
 ]
 
 app.controller "homeController", ["$scope", "utils", ($scope, utils) ->
 	utils.setTitle("Home")
 ]
 
-app.controller "skillsController", ["$scope", "$timeout", "$routeParams", "$http", "utils",
-	($scope, $timeout, $routeParams, $http, utils) ->
-		utils.setTitle("Skills")
+app.controller "skillsController",
+	["$scope", "$timeout", "$routeParams", "$http", "utils",
+		($scope, $timeout, $routeParams, $http, utils) ->
+			utils.setTitle("Skills")
 
-		$scope.skills = []
-		$scope.search = $routeParams.search or ""
-		$scope.searchFilter = (skill) ->
-			skill.name.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
+			$scope.skills = []
+			$scope.search = $routeParams.search or ""
+			$scope.searchFilter = (skill) ->
+				skill.name.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
 
-		$http.get "/api/skills"
-			.then (response) ->
-				$scope.skills = response.data.skills
-]
+			$http.get "/api/skills"
+				.then (response) ->
+					$scope.skills = response.data.skills
+	]
 
-app.controller "portfolioController", ["$scope", "$timeout", "$routeParams", "$http", "utils",
-	($scope, $timeout, $routeParams, $http, utils) ->
-		utils.setTitle("Portfolio")
+app.controller "portfolioController",
+	["$scope", "$timeout", "$routeParams", "$http", "utils",
+		($scope, $timeout, $routeParams, $http, utils) ->
+			utils.setTitle("Portfolio")
 
-		$scope.works = []
-		$scope.search = $routeParams.search or ""
-		$scope.searchFilter = (work) ->
-			matchedSkills = []
-			angular.forEach work.skills, (skill) ->
-				@push skill if skill.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
-			, matchedSkills
-			matchedSkills.length or work.name.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
-		$scope.currentWork = null
+			$scope.works = []
+			$scope.search = $routeParams.search or ""
+			$scope.searchFilter = (work) ->
+				matchedSkills = []
+				angular.forEach work.skills, (skill) ->
+					@push skill if skill.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
+				, matchedSkills
+				matchedSkills.length or work.name.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
+			$scope.currentWork = null
 
-		$scope.images = []
+			$scope.images = []
 
-		$http.get "/api/works"
-			.then (response) ->
-				$scope.works = response.data.works
-				angular.forEach $scope.works, (work) ->
-					@push "/images/portfolio/" + work.image
-				, $scope.images
-]
+			$http.get "/api/works"
+				.then (response) ->
+					$scope.works = response.data.works
+					angular.forEach $scope.works, (work) ->
+						@push "/images/portfolio/" + work.image
+					, $scope.images
+	]
 
 app.controller "contactController", ["$scope", "utils", ($scope, utils) ->
 	utils.setTitle("Contact")
@@ -95,7 +99,8 @@ app.directive 'ngEnter', ->
 app.directive 'ngAutoFocus', ->
 	(scope, element, attrs) ->
 		element[0].focus()
-		element[0].selectionStart = element[0].selectionEnd = element[0].value.length # focus at the end
+		element[0].selectionStart = element[0].selectionEnd =
+			element[0].value.length # focus at the end
 
 app.directive 'makeFocus', ($timeout) ->
 	'use strict'
@@ -111,7 +116,7 @@ app.directive 'starRating', ->
 		restrict: 'EA'
 		template: '<ul class=\'rating\' ng-class=\'{readonly: readonly}\'>
 						<li ng-repeat=\'star in stars\' ng-class=\'star\' ng-click=\'toggle($index)\'>
-							<i class=\'fa fa-star\'></i>
+								<i class=\'fa fa-star\'></i>
 						</li>
 					</ul>'
 		scope:

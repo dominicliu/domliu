@@ -1,4 +1,3 @@
-app = require("./app")
 gulp = require 'gulp'
 
 autoprefixer = require 'autoprefixer'
@@ -6,6 +5,7 @@ browserSync = undefined
 coffee = require('gulp-coffee')
 gutil = require('gulp-util')
 minifyCSS = require('gulp-minify-css')
+nodemon = require('gulp-nodemon')
 postcss = require 'gulp-postcss'
 rename = require('gulp-rename')
 sass = require 'gulp-sass'
@@ -13,24 +13,25 @@ sourcemaps = require('gulp-sourcemaps')
 uglify = require('gulp-uglify')
 
 dirs =
-	js: "./public/javascripts/"
+	js: './public/javascripts/'
 	sass: "./public/stylesheets/sass/"
 	css: "./public/stylesheets/css/"
-	jade: "./views/"
+	jade: './views/'
 
-globs = 
+globs =
 	coffee: "#{dirs.js}*.coffee"
 	sass: "#{dirs.sass}style.scss"
 	jade: "#{dirs.jade}*.jade"
 
-port = process.env.PORT or 3000
-
 gulp.task 'serve', ->
-	app.set "port", port
-	server = app.listen(app.get("port"), ->
-		console.log "Express server listening on port " + server.address().port
-		return
-	)
+	nodemon
+		script: 'app.coffee'
+		ext: 'coffee'
+		ignore: 'public'
+	.on 'restart', ->
+		setTimeout ->
+			browserSync.reload()
+		, 500
 
 gulp.task 'coffee', ->
 	gulp.src(globs.coffee)
@@ -60,9 +61,10 @@ gulp.task 'browser-sync-sass', ->
 gulp.task 'browser-sync', ['serve'], ->
 	browserSync = require('browser-sync').create()
 	browserSync.init
-		proxy: "localhost:#{port}"
+		port: 3001
+		proxy: "localhost:3000"
 		ui:
-			port: 8080
+			port: 3002
 
 gulp.task 'watch', ['serve', 'browser-sync', 'coffee', 'sass'], ->
 	gulp.watch globs.coffee, ['coffee']

@@ -61,4 +61,10 @@ app.use (err, req, res, next) ->
 
 	return
 
+app.set "port", process.env.PORT or 3000
+server = app.listen(app.get("port"), ->
+	console.log "Express server listening on port " + server.address().port
+	return
+)
+
 module.exports = app
