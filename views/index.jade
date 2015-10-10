@@ -6,30 +6,11 @@ block content
 		meta(charset='utf-8')
 		title Dominic Liu
 		link(rel='shortcut icon', href='/images/favicon.ico')
-		script(src='/javascripts/libs/bower_components/jquery/dist/jquery.min.js')
-		script(src='/javascripts/libs/bower_components/angular/angular.min.js')
-		script(src='/javascripts/libs/angular/angular-route.min.js')
-		script(src='/javascripts/libs/angular/angular-animate.min.js')
-		link(rel='stylesheet', href='/stylesheets/css/bootstrap.min.css')
-		script(src='/javascripts/libs/bower_components/bootstrap/dist/js/bootstrap.min.js')
+		script(src='/javascripts/vendor.js')
+		link(rel='stylesheet', href='/stylesheets/css/vendor.css')
 		link(rel='stylesheet', type='text/css', href='/stylesheets/css/style.min.css')
-		link(rel='stylesheet', type='text/css', href='/stylesheets/css/font-awesome.min.css')
-		script(src='/javascripts/libs/bower_components/moment/min/moment.min.js')
-		script(src='/javascripts/libs/underscore-min.js')
-
-		script(src='/javascripts/libs/bower_components/masonry/dist/masonry.pkgd.min.js')
-		script(src='/javascripts/libs/bower_components/imagesloaded/imagesloaded.pkgd.min.js')
-		script(src='/javascripts/libs/bower_components/angular-masonry/angular-masonry.js')
-
-		//- script(src='/javascripts/libs/angular/angular-touch.min.js')
-		//- link(rel='stylesheet', type='text/css', href='/javascripts/libs/bower_components/angular-loading-bar/build/loading-bar.min.css')
-		//- script(src='/javascripts/libs/bower_components/angular-loading-bar/build/loading-bar.min.js')
-		//- script(src='/javascripts/libs/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
-		//- link(rel='stylesheet', type='text/css', href='/javascripts/libs/angular-bootstrap-lightbox.min.css')
-		//- script(src='/javascripts/libs/angular-bootstrap-lightbox.min.js')
-
 		link(rel='stylesheet', type='text/css', href='/javascripts/libs/lightbox/css/lightbox.css')
-		script(src='/javascripts/libs/lightbox/js/lightbox.min.js')
+		script(src='/javascripts/libs/underscore-min.js')
 
 		script(src='/javascripts/app.min.js')
 		base(href="/")
@@ -42,20 +23,20 @@ block content
 						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#menu')
 							span.sr-only Toggle navigation
 							i.fa.fa-bars
-						a.navbar-brand(href='/') Dominic Liu
+						a.navbar-brand(ui-sref='/') Dominic Liu
 					// Collect the nav links, forms, and other content for toggling
 					#menu.collapse.navbar-collapse
 						ul.nav.navbar-nav.navbar-right
 							li
-								a.menu-item(href="/", ng-class="{active: isActive('/')}", ng-click="toggleNavbar()")
+								a.menu-item(ui-sref="home", ng-class="{active: isActive('/')}", ng-click="toggleNavbar()")
 									span.fa.fa-home
 									| &nbsp;&nbsp;Home
 							li
-								a.menu-item(href="/skills", ng-class="{active: isActive('/skills')}", ng-click="toggleNavbar()")
+								a.menu-item(ui-sref="skills", ng-class="{active: isActive('/skills')}", ng-click="toggleNavbar()")
 									span.fa.fa-cogs
 									| &nbsp;&nbsp;Skills
 							li
-								a.menu-item(href="/portfolio", ng-class="{active: isActive('/portfolio')}", ng-click="toggleNavbar()")
+								a.menu-item(ui-sref="portfolio", ng-class="{active: isActive('/portfolio')}", ng-click="toggleNavbar()")
 									span.fa.fa-briefcase
 									| &nbsp;&nbsp;Portfolio
 							li
@@ -63,7 +44,7 @@ block content
 									span.fa.fa-file-text
 									| &nbsp;&nbsp;Résumé
 							li
-								a.menu-item(href="/contact", ng-class="{active: isActive('/contact')}", ng-click="toggleNavbar()")
+								a.menu-item(ui-sref="contact", ng-class="{active: isActive('/contact')}", ng-click="toggleNavbar()")
 									span.fa.fa-envelope
 									| &nbsp;&nbsp;Contact
 		//- header
@@ -72,7 +53,7 @@ block content
 		//- 		| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
 				
-		main(ng-view)
+		main(ui-view="")
 
 		script(src='javascripts/libs/webfont.js')
 		script(src='javascripts/fonts.min.js')

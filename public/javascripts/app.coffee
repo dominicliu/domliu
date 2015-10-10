@@ -1,22 +1,26 @@
-app = angular.module "app", ["ngRoute", "ngAnimate", "wu.masonry"]
+app = angular.module "app", ["ui.router", "wu.masonry"]
 
-app.config ["$routeProvider", "$locationProvider",
-	($routeProvider, $locationProvider) ->
-		$routeProvider
-			.when "/",
+app.config ["$stateProvider", '$urlRouterProvider', '$locationProvider',
+	($stateProvider, $urlRouterProvider, $locationProvider) ->
+		$locationProvider.html5Mode true
+		$urlRouterProvider.otherwise('/')
+		$stateProvider
+			.state 'home',
+				url: "/",
 				templateUrl: "/templates/home"
 				controller: "homeController"
-			.when "/skills",
+			.state 'skills',
+				url: "/skills",
 				templateUrl: "/templates/skills"
 				controller: "skillsController"
-			.when "/portfolio",
+			.state 'portfolio',
+				url: "/portfolio",
 				templateUrl: "/templates/portfolio"
 				controller: "portfolioController"
-			.when "/contact",
+			.state 'contact',
+				url: "/contact",
 				templateUrl: "/templates/contact"
 				controller: "contactController"
-
-		$locationProvider.html5Mode(true)
 ]
 
 app.factory "utils", ->
@@ -45,12 +49,12 @@ app.controller "homeController", ["$scope", "utils", ($scope, utils) ->
 ]
 
 app.controller "skillsController",
-	["$scope", "$timeout", "$routeParams", "$http", "utils",
-		($scope, $timeout, $routeParams, $http, utils) ->
+	["$scope", "$timeout", "$stateParams", "$http", "utils",
+		($scope, $timeout, $stateParams, $http, utils) ->
 			utils.setTitle("Skills")
 
 			$scope.skills = []
-			$scope.search = $routeParams.search or ""
+			$scope.search = $stateParams.search or ""
 			$scope.searchFilter = (skill) ->
 				skill.name.toLowerCase().indexOf($scope.search.toLowerCase()) >= 0
 
@@ -60,12 +64,12 @@ app.controller "skillsController",
 	]
 
 app.controller "portfolioController",
-	["$scope", "$timeout", "$routeParams", "$http", "utils",
-		($scope, $timeout, $routeParams, $http, utils) ->
+	["$scope", "$timeout", "$stateParams", "$http", "utils",
+		($scope, $timeout, $stateParams, $http, utils) ->
 			utils.setTitle("Portfolio")
 
 			$scope.works = []
-			$scope.search = $routeParams.search or ""
+			$scope.search = $stateParams.search or ""
 			$scope.searchFilter = (work) ->
 				matchedSkills = []
 				angular.forEach work.skills, (skill) ->

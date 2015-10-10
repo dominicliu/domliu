@@ -3,6 +3,7 @@ gulp = require 'gulp'
 autoprefixer = require 'autoprefixer'
 browserSync = undefined
 coffee = require('gulp-coffee')
+concat = require('gulp-concat')
 gutil = require('gulp-util')
 minifyCSS = require('gulp-minify-css')
 nodemon = require('gulp-nodemon')
@@ -55,6 +56,27 @@ compileSass = ->
 gulp.task 'sass', ->
 	compileSass()
 
+gulp.task 'vendorJs', ->
+	gulp.src([
+		'bower_components/jquery/dist/jquery.min.js'
+		'bower_components/angular/angular.min.js'
+		'bower_components/angular-ui-router/release/angular-ui-router.min.js'
+		'bower_components/bootstrap/dist/js/bootstrap.min.js'
+		'bower_components/moment/min/moment.min.js'
+		'bower_components/masonry/dist/masonry.pkgd.min.js'
+		'bower_components/imagesloaded/imagesloaded.pkgd.min.js'
+		'bower_components/angular-masonry/angular-masonry.js'
+		'javascripts/libs/lightbox/js/lightbox.min.js'
+	]).pipe concat 'vendor.js'
+	.pipe gulp.dest dirs.js
+
+gulp.task 'vendorCss', ->
+	gulp.src([
+		'public/stylesheets/css/bootstrap.min.css'
+		'public/stylesheets/css/font-awesome.min.css'
+	]).pipe concat 'vendor.css'
+	.pipe gulp.dest dirs.css
+
 gulp.task 'browser-sync-sass', ->
 	compileSass().pipe browserSync.stream()
 
@@ -66,12 +88,12 @@ gulp.task 'browser-sync', ['serve'], ->
 		ui:
 			port: 3002
 
-gulp.task 'watch', ['serve', 'browser-sync', 'coffee', 'sass'], ->
+gulp.task 'watch', ['serve', 'browser-sync', 'coffee', 'sass', 'vendorJs', 'vendorCss'], ->
 	gulp.watch globs.coffee, ['coffee']
 		.on 'change', browserSync.reload
 	gulp.watch globs.sass, ['browser-sync-sass']
 	gulp.watch globs.jade, browserSync.reload
 
-gulp.task 'build', ['coffee', 'sass']
+gulp.task 'build', ['coffee', 'sass', 'vendorJs', 'vendorCss']
 
-gulp.task 'default', ['watch', 'serve']
+gulp.task 'default', ['watch']
