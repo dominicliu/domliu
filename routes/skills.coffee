@@ -2,7 +2,7 @@ module.exports = [
 	{
 		name: "AngularJS"
 		image: "angular.jpg"
-		rating: 3
+		rating: 5
 		extras: ["Protractor"]
 		links: [
 			{
