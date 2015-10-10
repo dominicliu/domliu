@@ -28,7 +28,7 @@ node_modules
 .lock-wscript
 
 # Bower Components
-public/javascripts/libs/bower_components
+bower_components
 
 # build files
 public/javascripts/fonts.js
