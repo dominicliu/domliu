@@ -8,7 +8,8 @@
 		sp
 		sp
 		.row
-			.col-sm-3.col-lg-2(ng-repeat="skill in skills | filter : searchFilter")
+			.col-sm-3.col-lg-2(class="velocity-transition-slideRightIn"
+				data-velocity-opts="{ stagger: 100 }" ng-repeat="skill in skills | filter : searchFilter")
 				.skill
 					img(ng-src="/images/skills/{{skill.image}}")
 					div

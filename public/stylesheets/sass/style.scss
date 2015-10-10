@@ -94,16 +94,6 @@ body {
 		width: 100%;
 		z-index: 999;
 
-		&.ng-enter {
-			// top: -50px;
-			opacity: 0;
-
-			&.ng-enter-active {
-				// top: 0;
-				opacity: 1;
-			}
-		}
-
 		>div {
 			// padding-top: 20px;
 			// padding-bottom: 20px;

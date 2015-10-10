@@ -1,4 +1,4 @@
-app = angular.module "app", ["ui.router", "wu.masonry"]
+app = angular.module "app", ["ui.router", "wu.masonry", 'angular-velocity']
 
 app.config ["$stateProvider", '$urlRouterProvider', '$locationProvider',
 	($stateProvider, $urlRouterProvider, $locationProvider) ->

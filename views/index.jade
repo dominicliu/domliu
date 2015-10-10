@@ -11,12 +11,12 @@ block content
 		link(rel='stylesheet', type='text/css', href='/stylesheets/css/style.min.css')
 		link(rel='stylesheet', type='text/css', href='/javascripts/libs/lightbox/css/lightbox.css')
 		script(src='/javascripts/libs/underscore-min.js')
-
 		script(src='/javascripts/app.min.js')
 		base(href="/")
 
 	body(ng-app='app' ng-controller="appController")
-		nav.navbar.navbar-default(ng-if="animationActive")
+		nav.navbar.navbar-default.velocity-transition-slideDownBigIn(ng-if="animationActive"
+			data-velocity-opts="{ duration: 300 }")
 			.container
 					// Brand and toggle get grouped for better mobile display
 					.navbar-header

@@ -66,6 +66,10 @@ gulp.task 'vendorJs', ->
 		'bower_components/masonry/dist/masonry.pkgd.min.js'
 		'bower_components/imagesloaded/imagesloaded.pkgd.min.js'
 		'bower_components/angular-masonry/angular-masonry.js'
+		'bower_components/angular-animate/angular-animate.min.js'
+		'bower_components/velocity/velocity.min.js'
+		'bower_components/velocity/velocity.ui.min.js'
+		'bower_components/angular-velocity/angular-velocity.min.js'
 		'javascripts/libs/lightbox/js/lightbox.min.js'
 	]).pipe concat 'vendor.js'
 	.pipe gulp.dest dirs.js
