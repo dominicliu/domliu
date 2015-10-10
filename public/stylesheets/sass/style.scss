@@ -90,6 +90,7 @@ body {
 	.navbar {
 		// text-align: center;
 		background-color: $primary;
+		border: 0;
 		border-bottom: 3px solid $success;
 		border-radius: 0;
 		overflow: hidden;
@@ -197,6 +198,27 @@ body {
 						background-color: fade-out($primary, .2);
 						color: $white;
 						padding: 6px 12px;
+					}
+				}
+
+				.carousel-control {
+					.fa-chevron-left,
+					.fa-chevron-right {
+						position: absolute;
+						top: 50%;
+						margin-top: -10px;
+						z-index: 5;
+						display: inline-block;
+					}
+
+					.fa-chevron-left {
+						left: 50%;
+						margin-left: -10px;
+					}
+
+					.fa-chevron-right {
+						right: 50%;
+						margin-right: -10px;
 					}
 				}
 			}
