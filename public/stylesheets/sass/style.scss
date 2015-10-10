@@ -1,3 +1,6 @@
+@import 'bootstrap';
+@import 'bootflat';
+
 $white: #fff;
 $gray: #ccc;
 $black: #000;
@@ -86,23 +89,27 @@ body {
 
 	.navbar {
 		// text-align: center;
+		background-color: $primary;
 		border-bottom: 3px solid $success;
 		border-radius: 0;
 		overflow: hidden;
 		position: fixed;
-		transition: all linear .5s;
+		transition: all linear 0.5s;
 		width: 100%;
 		z-index: 999;
 
 		>div {
 			// padding-top: 20px;
 			// padding-bottom: 20px;
-			background-color: $primary;
 			position: relative;
 
 			.navbar-brand {
 				color: $white;
 				font-weight: 700;
+
+				&:hover {
+					cursor: pointer; 
+				}
 			}
 
 			.navbar-toggle {
@@ -110,7 +117,7 @@ body {
 			}
 
 			a {
-				transition: color .3s;
+				transition: color 0.3s;
 
 				&.menu-item {
 					// margin-right: 25px;
@@ -122,6 +129,34 @@ body {
 
 					&.active {
 						color: $white;
+					}
+
+					&::before,
+					&::after {
+						border: 2px solid fade-out($success, 0.8);
+						border-radius: 50%;
+						content: '';
+						height: 100px;
+						left: 50%;
+						opacity: 0;
+						position: absolute;
+						top: 50%;
+						transform: translateX(-50%) translateY(-50%) scale(0.2);
+						transition: transform 0.3s, opacity 0.3s;
+						width: 100px;
+					}
+
+					&::after {
+						border-width: 6px;
+						height: 90px;
+						transform: translateX(-50%) translateY(-50%) scale(0.8);
+						width: 90px;
+					}
+
+					&:hover::before,
+					&:hover::after {
+						opacity: 1;
+						transform: translateX(-50%) translateY(-50%) scale(1);
 					}
 				}
 			}
