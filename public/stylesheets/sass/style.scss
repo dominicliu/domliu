@@ -1,3 +1,6 @@
+$aqua-dark: #18bc9c;
+$aqua-light: fade-out($aqua-dark, 0.3);
+
 @import 'bootstrap';
 @import 'bootflat';
 
@@ -113,7 +116,9 @@ body {
 				}
 			}
 
-			.navbar-toggle {
+			.navbar-toggle, .navbar-toggle:focus {
+				background-color: $success;
+				border-color: $success;
 				color: $white;
 			}
 
@@ -132,32 +137,34 @@ body {
 						color: $white;
 					}
 
-					&::before,
-					&::after {
-						border: 2px solid fade-out($success, 0.8);
-						border-radius: 50%;
-						content: '';
-						height: 100px;
-						left: 50%;
-						opacity: 0;
-						position: absolute;
-						top: 50%;
-						transform: translateX(-50%) translateY(-50%) scale(0.2);
-						transition: transform 0.3s, opacity 0.3s;
-						width: 100px;
-					}
+					@media (min-width: $screen-sm-min) {
+						&::before,
+						&::after {
+							border: 2px solid fade-out($success, 0.8);
+							border-radius: 50%;
+							content: '';
+							height: 100px;
+							left: 50%;
+							opacity: 0;
+							position: absolute;
+							top: 50%;
+							transform: translateX(-50%) translateY(-50%) scale(0.2);
+							transition: transform 0.3s, opacity 0.3s;
+							width: 100px;
+						}
 
-					&::after {
-						border-width: 6px;
-						height: 90px;
-						transform: translateX(-50%) translateY(-50%) scale(0.8);
-						width: 90px;
-					}
+						&::after {
+							border-width: 6px;
+							height: 90px;
+							transform: translateX(-50%) translateY(-50%) scale(0.8);
+							width: 90px;
+						}
 
-					&:hover::before,
-					&:hover::after {
-						opacity: 1;
-						transform: translateX(-50%) translateY(-50%) scale(1);
+						&:hover::before,
+						&:hover::after {
+							opacity: 1;
+							transform: translateX(-50%) translateY(-50%) scale(1);
+						}
 					}
 				}
 			}
@@ -222,6 +229,10 @@ body {
 					}
 				}
 			}
+		}
+
+		a {
+			transition: color 0.3s;
 		}
 
 		.outer {
@@ -320,14 +331,6 @@ body {
 
 				p {
 					margin-bottom: 5px;
-				}
-
-				a {
-					transition: color 0.3s;
-
-					&:hover {
-						color: $success-darker;
-					}
 				}
 			}
 		}
