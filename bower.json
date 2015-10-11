@@ -20,6 +20,7 @@
     "Bootflat": "~2.0.4",
     "angular-ui-router": "~0.2.15",
     "angular-velocity": "~0.3.2",
-    "bootstrap-sass": "~3.3.5"
+    "bootstrap-sass": "~3.3.5",
+    "headroom.js": "~0.7.0"
   }
 }

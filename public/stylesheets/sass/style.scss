@@ -50,7 +50,6 @@ $danger: #e74c3c;
 		 url('../fonts/lato/lato-bol-webfont.svg#latobold') format('svg');
 	font-weight: 700;
 	font-style: normal;
-
 }
 
 body,
@@ -101,6 +100,18 @@ body {
 		transition: all linear 0.5s;
 		width: 100%;
 		z-index: 999;
+
+		&.headroom {
+			// transition: transform 200ms linear;
+		}
+
+		&.headroom--pinned {
+			transform: translateY(0%);
+		}
+
+		&.headroom--unpinned {
+			transform: translateY(-100%);
+		}
 
 		>div {
 			// padding-top: 20px;

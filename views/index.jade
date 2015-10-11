@@ -17,7 +17,7 @@ block content
 
 	body(ng-app='app' ng-controller="appController")
 		nav.navbar.navbar-default.velocity-transition-slideDownBigIn(ng-if="animationActive"
-			data-velocity-opts="{ duration: 300 }")
+			data-velocity-opts="{ duration: 300, complete: velocityComplete }" headroom="")
 			.container
 					// Brand and toggle get grouped for better mobile display
 					.navbar-header
