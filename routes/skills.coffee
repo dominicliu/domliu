@@ -1,7 +1,7 @@
 module.exports = [
 	{
 		name: "AngularJS"
-		image: "angular.jpg"
+		image: "angular.png"
 		rating: 5
 		extras: ["Protractor"]
 		links: [
@@ -17,7 +17,7 @@ module.exports = [
 	}
 	{
 		name: "Ember.js"
-		image: "ember.jpg"
+		image: "ember.png"
 		rating: 5
 		extras: ["Ember Data"]
 		links: [
@@ -33,7 +33,7 @@ module.exports = [
 	}
 	{
 		name: "CoffeeScript"
-		image: "coffeescript.jpg"
+		image: "coffeescript.png"
 		rating: 5
 		extras: []
 		links: [
@@ -49,7 +49,7 @@ module.exports = [
 	}
 	{
 		name: "Node.js"
-		image: "node.jpg"
+		image: "node.png"
 		rating: 5
 		extras: ["Express"]
 		links: [
@@ -65,7 +65,7 @@ module.exports = [
 	}
 	{
 		name: "PHP"
-		image: "php.jpg"
+		image: "php.png"
 		rating: 5
 		extras: ["Twig"]
 		links: [
@@ -77,7 +77,7 @@ module.exports = [
 	}
 	{
 		name: "MySQL"
-		image: "mysql.jpg"
+		image: "mysql.png"
 		rating: 5
 		extras: []
 		links: [
@@ -93,7 +93,7 @@ module.exports = [
 	}
 	{
 		name: "MongoDB"
-		image: "mongodb.jpg"
+		image: "mongodb.png"
 		rating: 3
 		extras: ["Mongoose"]
 		links: [
@@ -105,7 +105,7 @@ module.exports = [
 	}
 	{
 		name: "jQuery"
-		image: "jquery.jpg"
+		image: "jquery.png"
 		rating: 5
 		extras: []
 		links: [
@@ -125,7 +125,7 @@ module.exports = [
 	}
 	{
 		name: "Bootstrap"
-		image: "bootstrap.jpg"
+		image: "bootstrap.png"
 		rating: 5
 		extras: []
 		links: [
@@ -141,7 +141,7 @@ module.exports = [
 	}
 	{
 		name: "Less"
-		image: "less.jpg"
+		image: "less.png"
 		rating: 5
 		extras: []
 		links: [
@@ -157,7 +157,7 @@ module.exports = [
 	}
 	{
 		name: "Graphic Design"
-		image: "graphic_design.jpg"
+		image: "graphic_design.png"
 		rating: 4
 		extras: []
 		links: [
@@ -173,7 +173,7 @@ module.exports = [
 	}
 	{
 		name: "Web Design"
-		image: "web_design.jpg"
+		image: "web_design.png"
 		rating: 3
 		extras: []
 		links: [
@@ -193,14 +193,14 @@ module.exports = [
 	}
 	{
 		name: "Photography"
-		image: "photography.jpg"
+		image: "photography.png"
 		rating: 5
 		extras: []
 		links: []
 	}
 	{
 		name: "Photoshop"
-		image: "photoshop.jpg"
+		image: "photoshop.png"
 		rating: 5
 		extras: []
 		links: [
@@ -212,7 +212,7 @@ module.exports = [
 	}
 	{
 		name: "Illustrator"
-		image: "illustrator.jpg"
+		image: "illustrator.png"
 		rating: 2
 		extras: []
 		links: [
@@ -224,7 +224,7 @@ module.exports = [
 	}
 	{
 		name: "InDesign"
-		image: "indesign.jpg"
+		image: "indesign.png"
 		rating: 5
 		extras: []
 		links: [
@@ -236,7 +236,7 @@ module.exports = [
 	}
 	{
 		name: "Premiere Pro"
-		image: "premiere.jpg"
+		image: "premiere.png"
 		rating: 5
 		extras: []
 		links: [
@@ -248,7 +248,7 @@ module.exports = [
 	}
 	{
 		name: "After Effects"
-		image: "after_effects.jpg"
+		image: "after_effects.png"
 		rating: 3
 		extras: []
 		links: [
@@ -260,7 +260,7 @@ module.exports = [
 	}
 	{
 		name: "Cinematography"
-		image: "film.jpg"
+		image: "cinematography.png"
 		rating: 3
 		extras: []
 		links: [
