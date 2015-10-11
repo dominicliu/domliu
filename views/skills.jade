@@ -8,21 +8,24 @@
 		sp
 		sp
 		.row
-			.col-sm-3.col-lg-2(class="velocity-transition-slideRightIn"
-				data-velocity-opts="{ stagger: 80 }" ng-repeat="skill in skills | filter : searchFilter")
+			.col-sm-6.col-md-4.col-lg-3(class="velocity-transition-slideRightIn"
+				data-velocity-opts="{ stagger: 30 }" ng-repeat="skill in skills | filter : searchFilter")
 				.skill
-					img(ng-src="/images/skills/{{skill.image}}")
-					div
-						h3.name {{skill.name}}
-						star-rating(ng-model="skill.rating" readonly="true")
-						p(ng-repeat="extra in skill.extras")
-							span.fa.fa-plus
-							| &nbsp;&nbsp;&nbsp;{{extra}}
-						p(ng-repeat="link in skill.links")
-							a(href="{{link.link}}" target="_blank")
-								span.fa.fa-link
-								| &nbsp;&nbsp;{{link.name}}
-						p(ng-if="skill.hasWorks")
-							a(href="/portfolio/?search={{skill.name}}")
-								span.fa.fa-briefcase
-								| &nbsp;&nbsp;Portfolio
+					table
+						tr
+							td
+								img(ng-src="/images/skills/{{skill.image}}")
+							td
+								p.name {{skill.name}}
+								star-rating(ng-model="skill.rating" readonly="true")
+								//- p(ng-repeat="extra in skill.extras")
+								//- 	span.fa.fa-plus
+								//- 	| &nbsp;&nbsp;&nbsp;{{extra}}
+								//- p(ng-repeat="link in skill.links")
+								//- 	a(href="{{link.link}}" target="_blank")
+								//- 		span.fa.fa-link
+								//- 		| &nbsp;&nbsp;{{link.name}}
+								p(ng-if="skill.hasWorks")
+									a(ui-sref="portfolio({search: skill.name})")
+										span.fa.fa-briefcase
+										| &nbsp;&nbsp;Portfolio

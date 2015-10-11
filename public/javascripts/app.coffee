@@ -14,7 +14,7 @@ app.config ["$stateProvider", '$urlRouterProvider', '$locationProvider',
 				templateUrl: "/templates/skills"
 				controller: "skillsController"
 			.state 'portfolio',
-				url: "/portfolio",
+				url: "/portfolio?search",
 				templateUrl: "/templates/portfolio"
 				controller: "portfolioController"
 			.state 'contact',
