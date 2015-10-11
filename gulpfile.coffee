@@ -10,6 +10,7 @@ nodemon = require('gulp-nodemon')
 open = require('open')
 Pageres = require 'pageres'
 path = require 'path'
+plumber = require 'gulp-plumber'
 postcss = require 'gulp-postcss'
 rename = require('gulp-rename')
 sass = require 'gulp-sass'
@@ -40,6 +41,7 @@ gulp.task 'serve', ->
 
 gulp.task 'coffee', ->
 	gulp.src(globs.coffee)
+		.pipe plumber()
 		.pipe(sourcemaps.init())
 		.pipe(coffee(bare: true).on('error', gutil.log))
 		.pipe(uglify())
@@ -49,13 +51,14 @@ gulp.task 'coffee', ->
 
 compileSass = ->
 	return gulp.src(globs.sass)
+		.pipe plumber()
 		.pipe(sourcemaps.init())
 		.pipe sass(
 			includePaths: [
 				'bower_components/bootstrap-sass/assets/stylesheets/'
 				'bower_components/Bootflat/bootflat/scss/'
 			]
-		)
+		).on('error', sass.logError)
 		.pipe postcss([autoprefixer({ browsers: ['> 5%'] }) ])
 		.pipe minifyCSS()
 		.pipe rename({suffix:'.min'})
