@@ -7,6 +7,9 @@ concat = require('gulp-concat')
 gutil = require('gulp-util')
 minifyCSS = require('gulp-minify-css')
 nodemon = require('gulp-nodemon')
+open = require('open')
+Pageres = require 'pageres'
+path = require 'path'
 postcss = require 'gulp-postcss'
 rename = require('gulp-rename')
 sass = require 'gulp-sass'
@@ -17,6 +20,7 @@ dirs =
 	js: './public/javascripts/'
 	sass: "./public/stylesheets/sass/"
 	css: "./public/stylesheets/css/"
+	screenshots: "./screenshots/"
 	jade: './views/'
 
 globs =
@@ -101,6 +105,21 @@ gulp.task 'watch', ['serve', 'browser-sync', 'coffee', 'sass', 'vendorJs', 'vend
 		.on 'change', browserSync.reload
 	gulp.watch globs.sass, ['browser-sync-sass']
 	gulp.watch globs.jade, browserSync.reload
+
+gulp.task 'screenshots', ->
+	pageres = new Pageres(delay: 3).src('localhost:3000', [
+		'iPhone 4'
+		'iPhone 5S'
+		'iPhone 6'
+		'iPhone 6 Plus'
+		'iPad'
+		'1280x1024'
+		'1366x768'
+		'1920x1080'
+	], crop: true).dest(dirs.screenshots)
+	pageres.run (err) ->
+		open(path.normalize("#{dirs.screenshots}localhost!3000-320x480-cropped.png"))
+		console.log 'done'
 
 gulp.task 'build', ['coffee', 'sass', 'vendorJs', 'vendorCss']
 

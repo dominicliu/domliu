@@ -38,5 +38,9 @@ public/javascripts/vendor.js
 public/stylesheets/css/vendor.css
 public/stylesheets/css/style.min.css
 
+# Sublime
 *.sublime-project
 *.sublime-workspace
+
+# Screenshots
+screenshots
