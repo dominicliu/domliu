@@ -1,4 +1,4 @@
-app = angular.module "app", ["ui.router", "wu.masonry", 'angular-velocity', 'headroom']
+app = angular.module "app", ['ngAnimate', "ui.router", "wu.masonry", 'headroom']
 
 app.config ["$stateProvider", '$urlRouterProvider', '$locationProvider',
 	($stateProvider, $urlRouterProvider, $locationProvider) ->
