@@ -441,7 +441,7 @@ body {
 			transition: .2s linear all;
 			opacity:1;
 
-			.ng-leave-active {
+			&.ng-leave-active {
 				opacity:0;
 			}
 		}
