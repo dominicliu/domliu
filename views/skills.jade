@@ -17,15 +17,10 @@
 							td
 								p.name {{skill.name}}
 								star-rating(ng-model="skill.rating" readonly="true")
-								//- p(ng-repeat="extra in skill.extras")
-								//- 	span.fa.fa-plus
-								//- 	| &nbsp;&nbsp;&nbsp;{{extra}}
-								//- p(ng-repeat="link in skill.links")
-								//- 	a(href="{{link.link}}" target="_blank")
-								//- 		span.fa.fa-link
-								//- 		| &nbsp;&nbsp;{{link.name}}
-								//- span.fa.fa-plus
-								//- | &nbsp;&nbsp; Extras
+								p.extras(ng-if="skill.extras.length")
+									span(uib-tooltip="{{skill.extras.join(' + ')}}")
+										span.fa.fa-plus
+										| &nbsp;&nbsp; Extras
 								p(ng-if="skill.hasWorks")
 									a(ui-sref="portfolio({search: skill.name})")
 										span.fa.fa-briefcase

@@ -74,6 +74,8 @@ gulp.task 'vendorJs', ->
 		'bower_components/angular/angular.min.js'
 		'bower_components/angular-ui-router/release/angular-ui-router.min.js'
 		'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js'
+		'bower_components/angular-bootstrap/ui-bootstrap.min.js'
+		'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'
 		'bower_components/moment/min/moment.min.js'
 		'bower_components/masonry/dist/masonry.pkgd.min.js'
 		'bower_components/imagesloaded/imagesloaded.pkgd.min.js'
@@ -88,6 +90,7 @@ gulp.task 'vendorJs', ->
 gulp.task 'vendorCss', ->
 	gulp.src([
 		'public/stylesheets/css/font-awesome.min.css'
+		'bower_components/animate.css/animate.min.css'
 	]).pipe concat 'vendor.css'
 	.pipe gulp.dest dirs.css
 

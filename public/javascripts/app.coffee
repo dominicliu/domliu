@@ -1,4 +1,4 @@
-app = angular.module "app", ['ngAnimate', "ui.router", "wu.masonry", 'headroom']
+app = angular.module "app", ['ngAnimate', "ui.router", 'ui.bootstrap', "wu.masonry", 'headroom']
 
 app.config ["$stateProvider", '$urlRouterProvider', '$locationProvider',
 	($stateProvider, $urlRouterProvider, $locationProvider) ->
@@ -38,9 +38,6 @@ app.controller "appController", ["$scope", "$timeout", "$location",
 		$scope.toggleNavbar = ->
 			$("button.navbar-toggle:visible").click()
 			return
-
-		$scope.velocityComplete = (el) ->
-			$(el).attr 'style', ''
 
 		$timeout ->
 			$scope.animationActive = true
