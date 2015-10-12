@@ -7,6 +7,7 @@ $aqua-light: fade-out($aqua-dark, 0.3);
 $white: #fff;
 $gray: #ccc;
 $gray-dark: #bbb;
+$gray-darker: #777;
 $black: #000;
 $blue: #407996;
 $blue-light: #90bdd4;
@@ -357,6 +358,10 @@ body {
 			>table {
 				a {
 					color: $gray-dark;
+
+					&:hover {
+						color: $gray-darker;
+					}
 				}
 
 				.name {
