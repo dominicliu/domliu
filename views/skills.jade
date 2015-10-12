@@ -18,7 +18,7 @@
 								p.name {{skill.name}}
 								star-rating(ng-model="skill.rating" readonly="true")
 								p.extras(ng-if="skill.extras.length")
-									span(uib-tooltip="{{skill.extras.join(' + ')}}")
+									span(uib-tooltip="{{skill.extras.join(' + ')}}" tooltip-trigger="mouseenter click")
 										span.fa.fa-plus
 										| &nbsp;&nbsp; Extras
 								p(ng-if="skill.hasWorks")
