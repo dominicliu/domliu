@@ -335,6 +335,16 @@ body {
 			margin-bottom: 20px;
 			text-align: left;
 
+			.name {
+				margin-top: 12px;
+				margin-bottom: 0;
+				word-wrap: break-word;
+			}
+
+			p {
+				margin-bottom: 5px;
+			}
+
 			>table {
 				font-size: 0.9em;
 				width: 100%;
@@ -352,16 +362,6 @@ body {
 					&:first-child {
 						width: 100px;
 					}
-				}
-
-				.name {
-					margin-top: 3px;
-					margin-bottom: 0;
-					word-wrap: break-word;
-				}
-
-				p {
-					margin-bottom: 5px;
 				}
 			}
 		}
@@ -406,6 +406,7 @@ body {
 
 		.work {
 			@extend .island;
+			padding-bottom: 10px;
 
 			.zoomIn {
 				cursor: zoom-in;
