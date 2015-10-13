@@ -151,3 +151,16 @@ app.directive 'starRating', ->
 					updateStars()
 
 	}
+
+app.directive 'vivus', ->
+	{
+		link: (scope, elem, attrs) ->
+			unless attrs.id
+				throw new Error "No id on the Vivus element detected."
+			new Vivus attrs.id,
+				type: 'delayed'
+				duration: 150
+				delay: -2000
+				file: '/images/dominic.svg'
+			return
+	}

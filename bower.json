@@ -23,6 +23,7 @@
     "headroom.js": "~0.7.0",
     "angular-animate": "~1.4.7",
     "animate.css": "~3.4.0",
-    "angular-bootstrap": "~0.14.1"
+    "angular-bootstrap": "~0.14.1",
+    "vivus": "~0.2.3"
   }
 }
