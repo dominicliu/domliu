@@ -1,21 +1,12 @@
 gulp = require 'gulp'
 
+plugins = require('gulp-load-plugins')()
+
 autoprefixer = require 'autoprefixer'
 browserSync = undefined
-coffee = require('gulp-coffee')
-concat = require('gulp-concat')
-gutil = require('gulp-util')
-minifyCSS = require('gulp-minify-css')
-nodemon = require('gulp-nodemon')
-open = require('open')
+open = require 'open'
 Pageres = require 'pageres'
 path = require 'path'
-plumber = require 'gulp-plumber'
-postcss = require 'gulp-postcss'
-rename = require('gulp-rename')
-sass = require 'gulp-sass'
-sourcemaps = require('gulp-sourcemaps')
-uglify = require('gulp-uglify')
 
 dirs =
 	js: './public/javascripts/'
@@ -30,7 +21,7 @@ globs =
 	jade: "#{dirs.jade}*.jade"
 
 gulp.task 'serve', ->
-	nodemon
+	plugins.nodemon
 		script: 'app.coffee'
 		ext: 'coffee'
 		ignore: 'public'
@@ -41,28 +32,28 @@ gulp.task 'serve', ->
 
 gulp.task 'coffee', ->
 	gulp.src(globs.coffee)
-		.pipe plumber()
-		.pipe(sourcemaps.init())
-		.pipe(coffee(bare: true).on('error', gutil.log))
-		.pipe(uglify())
-		.pipe rename({suffix:'.min'})
-		.pipe(sourcemaps.write())
+		.pipe plugins.plumber()
+		.pipe(plugins.sourcemaps.init())
+		.pipe(plugins.coffee(bare: true).on('error', plugins.util.log))
+		.pipe(plugins.uglify())
+		.pipe plugins.rename({suffix:'.min'})
+		.pipe(plugins.sourcemaps.write())
 		.pipe gulp.dest(dirs.js)
 
 compileSass = ->
 	return gulp.src(globs.sass)
-		.pipe plumber()
-		.pipe(sourcemaps.init())
-		.pipe sass(
+		.pipe plugins.plumber()
+		.pipe(plugins.sourcemaps.init())
+		.pipe plugins.sass(
 			includePaths: [
 				'bower_components/bootstrap-sass/assets/stylesheets/'
 				'bower_components/Bootflat/bootflat/scss/'
 			]
-		).on('error', sass.logError)
-		.pipe postcss([autoprefixer({ browsers: ['> 5%'] }) ])
-		.pipe minifyCSS()
-		.pipe rename({suffix:'.min'})
-		.pipe(sourcemaps.write())
+		).on('error', plugins.sass.logError)
+		.pipe plugins.postcss([autoprefixer({ browsers: ['> 5%'] }) ])
+		.pipe plugins.minifyCss()
+		.pipe plugins.rename({suffix:'.min'})
+		.pipe(plugins.sourcemaps.write())
 		.pipe gulp.dest(dirs.css)
 
 gulp.task 'sass', ->
@@ -85,14 +76,14 @@ gulp.task 'vendorJs', ->
 		'bower_components/headroom.js/dist/angular.headroom.min.js'
 		'bower_components/vivus/dist/vivus.min.js'
 		'public/javascripts/libs/lightbox/js/lightbox.min.js'
-	]).pipe concat 'vendor.js'
+	]).pipe plugins.concat 'vendor.js'
 	.pipe gulp.dest dirs.js
 
 gulp.task 'vendorCss', ->
 	gulp.src([
 		'public/stylesheets/css/font-awesome.min.css'
 		'bower_components/animate.css/animate.min.css'
-	]).pipe concat 'vendor.css'
+	]).pipe plugins.concat 'vendor.css'
 	.pipe gulp.dest dirs.css
 
 gulp.task 'browser-sync-sass', ->
