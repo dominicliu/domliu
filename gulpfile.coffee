@@ -7,6 +7,10 @@ open = require 'open'
 Pageres = require 'pageres'
 path = require 'path'
 
+myPlumber = ->
+	plugins.plumber
+		errorHandler: plugins.notify.onError("Error: <%= error.message %>")
+
 dirs =
 	js: './public/javascripts/'
 	sass: "./public/stylesheets/sass/"
@@ -31,7 +35,7 @@ gulp.task 'serve', ->
 
 gulp.task 'coffee', ->
 	gulp.src(globs.coffee)
-		.pipe plugins.plumber()
+		.pipe myPlumber()
 		.pipe(plugins.sourcemaps.init())
 		.pipe(plugins.coffee(bare: true).on('error', plugins.util.log))
 		.pipe(plugins.uglify())
@@ -41,7 +45,7 @@ gulp.task 'coffee', ->
 
 compileSass = ->
 	return gulp.src(globs.sass)
-		.pipe plugins.plumber()
+		.pipe myPlumber()
 		.pipe(plugins.sourcemaps.init())
 		.pipe plugins.sass(
 			includePaths: [
