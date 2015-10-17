@@ -2,7 +2,6 @@ gulp = require 'gulp'
 
 plugins = require('gulp-load-plugins')()
 
-autoprefixer = require 'autoprefixer'
 browserSync = undefined
 open = require 'open'
 Pageres = require 'pageres'
@@ -50,8 +49,8 @@ compileSass = ->
 				'bower_components/Bootflat/bootflat/scss/'
 			]
 		).on('error', plugins.sass.logError)
-		.pipe plugins.postcss([autoprefixer({ browsers: ['> 5%'] }) ])
-		.pipe plugins.minifyCss()
+		.pipe plugins.autoprefixer { browsers: ['> 5%'] }
+		.pipe plugins.cssnano()
 		.pipe plugins.rename({suffix:'.min'})
 		.pipe(plugins.sourcemaps.write())
 		.pipe gulp.dest(dirs.css)
