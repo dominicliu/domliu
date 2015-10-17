@@ -12,16 +12,18 @@ myPlumber = ->
 		errorHandler: plugins.notify.onError("Error: <%= error.message %>")
 
 dirs =
+	css: "./public/stylesheets/css/"
+	jade: './views/'
 	js: './public/javascripts/'
 	sass: "./public/stylesheets/sass/"
-	css: "./public/stylesheets/css/"
 	screenshots: "./screenshots/"
-	jade: './views/'
+	skillImages: './public/images/skills/'
 
 globs =
 	coffee: "#{dirs.js}*.coffee"
-	sass: "#{dirs.sass}style.scss"
 	jade: "#{dirs.jade}*.jade"
+	sass: "#{dirs.sass}style.scss"
+	skillImages: "#{dirs.skillImages}*"
 
 gulp.task 'serve', ->
 	plugins.nodemon
@@ -89,6 +91,13 @@ gulp.task 'vendorCss', ->
 	]).pipe plugins.concat 'vendor.css'
 	.pipe gulp.dest dirs.css
 
+gulp.task 'skillImages', ->
+	gulp.src globs.skillImages
+	.pipe plugins.imageResize
+		width: 100
+		imageMagick: true
+	.pipe gulp.dest "#{dirs.skillImages}small/"
+
 gulp.task 'browser-sync-sass', ->
 	compileSass().pipe browserSync.stream()
 
@@ -100,11 +109,12 @@ gulp.task 'browser-sync', ['serve'], ->
 		ui:
 			port: 3002
 
-gulp.task 'watch', ['serve', 'browser-sync', 'coffee', 'sass', 'vendorJs', 'vendorCss'], ->
+gulp.task 'watch', ['serve', 'browser-sync', 'coffee', 'sass', 'vendorJs', 'vendorCss', 'skillImages'], ->
 	gulp.watch globs.coffee, ['coffee']
 		.on 'change', browserSync.reload
 	gulp.watch globs.sass, ['browser-sync-sass']
 	gulp.watch globs.jade, browserSync.reload
+	gulp.watch globs.skillImages, ['skillImages']
 
 gulp.task 'screenshots', (cb) ->
 	argv = require('minimist')(process.argv.slice(2))
@@ -128,6 +138,6 @@ gulp.task 'screenshots', (cb) ->
 
 gulp.task 'test', ->
 
-gulp.task 'build', ['coffee', 'sass', 'vendorJs', 'vendorCss']
+gulp.task 'build', ['coffee', 'sass', 'vendorJs', 'vendorCss', 'skillImages']
 
 gulp.task 'default', ['watch']

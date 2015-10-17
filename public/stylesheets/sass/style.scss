@@ -415,6 +415,20 @@ body {
 			>div {
 				.name {
 					font-size: 20px;
+					margin-top: 18px;
+				}
+
+				.skill-icons {
+					margin-top: 15px;
+
+					img {
+						filter: grayscale(100%);
+						transition: 0.3s ease-in-out;
+					}
+
+					a:hover img {
+						filter: grayscale(0%);
+					}
 				}
 			}
 		}

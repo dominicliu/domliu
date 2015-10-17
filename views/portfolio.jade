@@ -20,7 +20,7 @@
 							a(href="{{link.link}}" target="_blank")
 								span.fa.fa-link
 								| &nbsp;&nbsp;&nbsp;&nbsp;{{link.name}}
-						p(ng-repeat="skill in work.skills")
-							a(ui-sref="skills({search: skill})")
-								span.fa.fa-cogs
-								| &nbsp;&nbsp;&nbsp;{{skill}}
+						.row.skill-icons
+							.col-xs-2(ng-repeat="skill in work.skillsWithImages")
+								a(ui-sref="skills({search: skill.name})")
+									img(ng-src="/images/skills/small/{{skill.image}}", uib-tooltip="{{skill.name}}")

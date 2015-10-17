@@ -37,6 +37,7 @@ public/javascripts/fonts.min.js
 public/javascripts/vendor.js
 public/stylesheets/css/vendor.css
 public/stylesheets/css/style.min.css
+public/images/skills/small
 
 # Sublime
 *.sublime-project
