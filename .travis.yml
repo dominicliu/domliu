@@ -5,4 +5,4 @@ node_js:
 script: gulp test
 notifications:
   email:
-    - onlylakehouse@gmail.com
+    on_success: always
