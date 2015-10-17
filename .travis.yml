@@ -2,9 +2,7 @@ language: node_js
 node_js:
   - "4.2.1"
   - "0.12"
-before_script:
-  - npm install -g gulp
-script: gulp build
+script: gulp test
 notifications:
   email:
     - onlylakehouse@gmail.com

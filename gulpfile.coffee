@@ -122,6 +122,8 @@ gulp.task 'screenshots', (cb) ->
 		open(path.normalize("#{dirs.screenshots}320x480.png"))
 		cb()
 
+gulp.task 'test', ->
+
 gulp.task 'build', ['coffee', 'sass', 'vendorJs', 'vendorCss']
 
 gulp.task 'default', ['watch']
