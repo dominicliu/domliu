@@ -84,7 +84,7 @@ gulp.task 'vendorJs', ->
 		'bower_components/headroom.js/dist/headroom.min.js'
 		'bower_components/headroom.js/dist/angular.headroom.min.js'
 		'bower_components/vivus/dist/vivus.min.js'
-		'javascripts/libs/lightbox/js/lightbox.min.js'
+		'public/javascripts/libs/lightbox/js/lightbox.min.js'
 	]).pipe concat 'vendor.js'
 	.pipe gulp.dest dirs.js
 
