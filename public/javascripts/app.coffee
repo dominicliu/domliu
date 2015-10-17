@@ -10,7 +10,7 @@ app.config ["$stateProvider", '$urlRouterProvider', '$locationProvider',
 				templateUrl: "/templates/home"
 				controller: "homeController"
 			.state 'skills',
-				url: "/skills",
+				url: "/skills?search",
 				templateUrl: "/templates/skills"
 				controller: "skillsController"
 			.state 'portfolio',

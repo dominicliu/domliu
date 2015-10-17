@@ -21,6 +21,6 @@
 								span.fa.fa-link
 								| &nbsp;&nbsp;&nbsp;&nbsp;{{link.name}}
 						p(ng-repeat="skill in work.skills")
-							a(href="/skills?search={{skill}}")
+							a(ui-sref="skills({search: skill})")
 								span.fa.fa-cogs
 								| &nbsp;&nbsp;&nbsp;{{skill}}
