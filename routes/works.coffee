@@ -1,5 +1,11 @@
 module.exports = [
 	{
+		name: "Personal Website"
+		image: "domliu.png"
+		skills: ["AngularJS", "Sass", "CoffeeScript", "Bootstrap", "Web Design"]
+		links: []
+	}
+	{
 		name: "Stopwatch Timer"
 		image: "timer.png"
 		skills: ["AngularJS", "Less", "CoffeeScript", "Bootstrap", "Web Design"]
