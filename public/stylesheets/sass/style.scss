@@ -345,6 +345,14 @@ body {
 				margin-bottom: 5px;
 			}
 
+			a {
+				color: $gray-dark;
+
+				&:hover, &:focus {
+					color: $gray-darker;
+				}
+			}
+
 			>table {
 				font-size: 0.9em;
 				width: 100%;
@@ -375,14 +383,6 @@ body {
 			}
 
 			>table {
-				a {
-					color: $gray-dark;
-
-					&:hover {
-						color: $gray-darker;
-					}
-				}
-
 				.name {
 					font-size: 18px;
 					margin-top: 0;
