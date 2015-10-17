@@ -140,6 +140,13 @@ module.exports = [
 		]
 	}
 	{
+		name: "Sass"
+		image: "sass.png"
+		rating: 5
+		extras: []
+		links: []
+	}
+	{
 		name: "Less"
 		image: "less.png"
 		rating: 5
