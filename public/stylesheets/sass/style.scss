@@ -75,492 +75,490 @@ textarea {
 	@include button-variant($black, $white, $gray)
 }
 
-body {
-	::selection {
-		background: $gray;
-		color: $white;
+::selection {
+	background: $gray;
+	color: $white;
+}
+
+sp {
+	display: block;
+	height: 5px;
+}
+
+a:hover,
+a:active,
+a:focus {
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+.navbar {
+	background-color: $primary;
+	border: 0;
+	border-bottom: 3px solid $success;
+	border-radius: 0;
+	overflow: hidden;
+	position: fixed;
+	transition: all linear 0.5s;
+	width: 100%;
+	z-index: 999;
+
+	&.headroom--pinned {
+		transform: translateY(0%);
 	}
 
-	sp {
-		display: block;
-		height: 5px;
+	&.headroom--unpinned {
+		transform: translateY(-100%);
 	}
 
-	a:hover,
-	a:active,
-	a:focus {
-		text-decoration: none;
+	&.ng-enter {
+		animation: fadeInDown 1s;
 	}
 
-	img {
-		max-width: 100%;
-	}
+	>div {
+		position: relative;
 
-	.navbar {
-		background-color: $primary;
-		border: 0;
-		border-bottom: 3px solid $success;
-		border-radius: 0;
-		overflow: hidden;
-		position: fixed;
-		transition: all linear 0.5s;
-		width: 100%;
-		z-index: 999;
+		.navbar-brand {
+			color: $white;
+			font-weight: 700;
 
-		&.headroom--pinned {
-			transform: translateY(0%);
+			&:hover {
+				cursor: pointer; 
+			}
 		}
 
-		&.headroom--unpinned {
-			transform: translateY(-100%);
-		}
-
-		&.ng-enter {
-			animation: fadeInDown 1s;
-		}
-
-		>div {
-			position: relative;
-
-			.navbar-brand {
-				color: $white;
-				font-weight: 700;
-
-				&:hover {
-					cursor: pointer; 
-				}
-			}
-
-			.navbar-toggle, .navbar-toggle:focus {
-				background-color: $success;
-				border-color: $success;
-				color: $white;
-			}
-
-			a {
-				transition: color 0.3s;
-
-				&.menu-item {
-					color: $success;
-
-					&:hover {
-						color: $white;
-					}
-
-					&.active {
-						color: $white;
-					}
-
-					@media (min-width: $screen-sm-min) {
-						&::before,
-						&::after {
-							border: 2px solid fade-out($success, 0.8);
-							border-radius: 50%;
-							content: '';
-							height: 100px;
-							left: 50%;
-							opacity: 0;
-							position: absolute;
-							top: 50%;
-							transform: translateX(-50%) translateY(-50%) scale(0.2);
-							transition: transform 0.3s, opacity 0.3s;
-							width: 100px;
-						}
-
-						&::after {
-							border-width: 6px;
-							height: 90px;
-							transform: translateX(-50%) translateY(-50%) scale(0.8);
-							width: 90px;
-						}
-
-						&:hover::before,
-						&:hover::after {
-							opacity: 1;
-							transform: translateX(-50%) translateY(-50%) scale(1);
-						}
-					}
-				}
-			}
-		}
-	}
-
-	main {
-		text-align: center;
-
-		.carousel-container {
-			height: 100%;
-			position: fixed;
-			width: 100%;
-
-			.carousel,
-			.item {
-				height: 100%;
-			}
-
-			.carousel-inner {
-				height: 100%;
-			}
-
-			.carousel {
-				height: 100%;
-				overflow: hidden;
-				width: 100%;
-
-				.fill {
-					background-position: center;
-					background-size: cover;
-					height: 100%;
-					width: 100%;
-				}
-
-				.carousel-caption {
-					span {
-						background-color: fade-out($primary, 0.2);
-						border-radius: 5px;
-						color: $white;
-						padding: 4px 8px;
-					}
-				}
-
-				.carousel-control {
-					.fa-chevron-left,
-					.fa-chevron-right {
-						position: absolute;
-						top: 50%;
-						margin-top: -10px;
-						z-index: 5;
-						display: inline-block;
-					}
-
-					.fa-chevron-left {
-						left: 50%;
-						margin-left: -10px;
-					}
-
-					.fa-chevron-right {
-						right: 50%;
-						margin-right: -10px;
-					}
-				}
-
-				@media(max-height: 430px) {
-					.carousel-caption,
-					.carousel-indicators {
-						display: none;
-					}
-				}
-			}
+		.navbar-toggle, .navbar-toggle:focus {
+			background-color: $success;
+			border-color: $success;
+			color: $white;
 		}
 
 		a {
 			transition: color 0.3s;
 
-			&.btn {
-				transition: none;
-			}
-		}
-
-		.outer {
-			display: table;
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			pointer-events: none;
-		}
-
-		.middle {
-			display: table-cell;
-			vertical-align: middle;
-		}
-
-		.inner {
-			margin-left: auto;
-			margin-right: auto;
-			z-index: 9999;
-			pointer-events: auto;
-			width: 70%;
-		}
-
-		.top-offset {
-			padding-top: 70px;
-		}
-
-		.portrait {
-			background-position: 50%;
-			background-repeat: no-repeat;
-			background-size: cover;
-			border: 2px solid $white;
-			border-radius: 50%;
-			bottom: -35px;
-			box-shadow: 0 0 10px fade-out($black, 0.5);
-			height: 120px;
-			margin: 0 auto;
-			overflow: hidden;
-			position: relative;
-			width: 120px;
-			z-index: 999;
-
-			@media (max-width: $screen-xs-max) {
-				width: 80px;
-				height: 80px;
-				bottom: -30px;
-			}
-		}
-
-		h1 {
-			margin-bottom: 20px;
-		}
-
-		.big-name {
-			background-color: fade-out($primary, 0.2);
-			border-radius: 10px;
-			margin-bottom: 20px;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 20px;
-			position: relative;
-			width: 550px;
-
-			@media (max-width: $screen-xs-max) {
-				width: 224px;
-			}
-
-			> div {
-				height: 180px;
-
-				@media (max-width: $screen-xs-max) {
-					height: 76px;
-				}
-			}
-
-			> p {
-				width: 100%;
-				color: $primary;
-				position: absolute;
-				bottom: -20px;
-				left: 0;
-
-				>span {
-					background-color: $white;
-					border-radius: 5px;
-					box-shadow: 0 0 10px fade-out($black, 0.5);
-					padding: 5px 15px;
-				}
-
-				.slash {
-					margin: 0 5px;
-					opacity: 0.4;
-				}
-
-				@media(max-width: $screen-xs-max) {
-					font-size: 0.8em;
-					position: static;
-					width: 100%;
-
-					>span {
-						display: block;
-						border-top-left-radius: 0;
-						border-top-right-radius: 0;
-					}
-				}
-			}
-		}
-
-		p.contact {
-			margin-top: 48px;
-
-			@media(max-height: 500px) {
-				margin-top: 20px;
-			}
-		}
-
-		.island {
-			margin-bottom: 20px;
-			text-align: left;
-
-			.name {
-				margin-top: 12px;
-				margin-bottom: 0;
-				word-wrap: break-word;
-			}
-
-			p {
-				margin-bottom: 5px;
-			}
-
-			a {
-				color: $gray-dark;
-
-				&:hover, &:focus {
-					color: $gray-darker;
-				}
-			}
-
-			>table {
-				font-size: 0.9em;
-				width: 100%;
-				border: 1px solid $white;
-				transition: border-color linear 0.3s;
+			&.menu-item {
+				color: $success;
 
 				&:hover {
-					border: 1px solid $gray;
+					color: $white;
 				}
-				
-				td {
-					vertical-align: top;
-					padding: 15px;
 
-					&:first-child {
+				&.active {
+					color: $white;
+				}
+
+				@media (min-width: $screen-sm-min) {
+					&::before,
+					&::after {
+						border: 2px solid fade-out($success, 0.8);
+						border-radius: 50%;
+						content: '';
+						height: 100px;
+						left: 50%;
+						opacity: 0;
+						position: absolute;
+						top: 50%;
+						transform: translateX(-50%) translateY(-50%) scale(0.2);
+						transition: transform 0.3s, opacity 0.3s;
 						width: 100px;
 					}
-				}
-			}
-		}
 
-		.skill {
-			@extend .island;
-
-			img {
-				max-width: none;
-				width: 80px;
-			}
-
-			>table {
-				.name {
-					font-size: 18px;
-					margin-top: 0;
-				}
-
-				star-rating ul {
-					margin-bottom: 10px;
-					margin-top: 6px;
-				}
-
-				.extras {
-					color: $gray-dark;
-					margin-bottom: 8px;
-				}
-
-				td:last-child {
-					height: 133px;
-				}
-			}
-		}
-
-		.work {
-			@extend .island;
-			padding-bottom: 10px;
-
-			.zoomIn {
-				cursor: zoom-in;
-			}
-
-			>div {
-				.name {
-					font-size: 20px;
-					margin-top: 18px;
-				}
-
-				.skill-icons {
-					margin-top: 10px;
-
-					img {
-						filter: grayscale(100%);
-						transition: 0.3s ease-in-out;
-						opacity: 0.5;
+					&::after {
+						border-width: 6px;
+						height: 90px;
+						transform: translateX(-50%) translateY(-50%) scale(0.8);
+						width: 90px;
 					}
 
-					a:hover img {
-						filter: grayscale(0%);
+					&:hover::before,
+					&:hover::after {
 						opacity: 1;
-					}
-
-					&.row {
-						margin-left: -10px;
-						margin-right: -10px;
-
-						[class*='col-'] {
-							padding-left: 10px;
-							padding-right: 10px;
-						}
+						transform: translateX(-50%) translateY(-50%) scale(1);
 					}
 				}
 			}
 		}
+	}
+}
 
-		.masonry-brick {
-			opacity: 0;
+main {
+	text-align: center;
 
-			&.loaded {
-				opacity: 1;
+	.carousel-container {
+		height: 100%;
+		position: fixed;
+		width: 100%;
+
+		.carousel,
+		.item {
+			height: 100%;
+		}
+
+		.carousel-inner {
+			height: 100%;
+		}
+
+		.carousel {
+			height: 100%;
+			overflow: hidden;
+			width: 100%;
+
+			.fill {
+				background-position: center;
+				background-size: cover;
+				height: 100%;
+				width: 100%;
 			}
-		}
 
-		.row.col-bottom>div {
-			margin-bottom: 10px;
-		}
-
-		span.align-to-icon {
-			position: relative;
-			bottom: 5px;
-		}
-
-		.ng-enter {
-			position:relative;
-			left: 10px;
-			transition:0.3s linear all;
-			opacity:0;
-
-			&.ng-enter-active {
-				opacity:1;
-				left: 0;
+			.carousel-caption {
+				span {
+					background-color: fade-out($primary, 0.2);
+					border-radius: 5px;
+					color: $white;
+					padding: 4px 8px;
+				}
 			}
-		}
 
-		.ng-move {
-			transition: 1s linear all;
-			opacity: .5;
+			.carousel-control {
+				.fa-chevron-left,
+				.fa-chevron-right {
+					position: absolute;
+					top: 50%;
+					margin-top: -10px;
+					z-index: 5;
+					display: inline-block;
+				}
 
-			&.ng-move-active {
-				opacity:1;
+				.fa-chevron-left {
+					left: 50%;
+					margin-left: -10px;
+				}
+
+				.fa-chevron-right {
+					right: 50%;
+					margin-right: -10px;
+				}
 			}
-		}
 
-		.ng-leave {
-			transition: .2s linear all;
-			opacity:1;
-
-			&.ng-leave-active {
-				opacity:0;
+			@media(max-height: 430px) {
+				.carousel-caption,
+				.carousel-indicators {
+					display: none;
+				}
 			}
-		}
-
-		.ng-enter-stagger {
-			transition-delay: 0.04s;
-			transition-duration: 0s;
 		}
 	}
 
-	.rating {
-		margin: 0;
-		padding: 0;
-		display: inline-block;
-		
-		li {
-			padding: 1px;
-			color: #ddd;
-			font-size: 16px;
-			list-style-type: none;
-			display: inline-block;
-			cursor: pointer;
-			&.filled {
-				color: #fd0; //#21568b
+	a {
+		transition: color 0.3s;
+
+		&.btn {
+			transition: none;
+		}
+	}
+
+	.outer {
+		display: table;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		pointer-events: none;
+	}
+
+	.middle {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	.inner {
+		margin-left: auto;
+		margin-right: auto;
+		z-index: 9999;
+		pointer-events: auto;
+		width: 70%;
+	}
+
+	.top-offset {
+		padding-top: 70px;
+	}
+
+	.portrait {
+		background-position: 50%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		border: 2px solid $white;
+		border-radius: 50%;
+		bottom: -35px;
+		box-shadow: 0 0 10px fade-out($black, 0.5);
+		height: 120px;
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
+		width: 120px;
+		z-index: 999;
+
+		@media (max-width: $screen-xs-max) {
+			width: 80px;
+			height: 80px;
+			bottom: -30px;
+		}
+	}
+
+	h1 {
+		margin-bottom: 20px;
+	}
+
+	.big-name {
+		background-color: fade-out($primary, 0.2);
+		border-radius: 10px;
+		margin-bottom: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		position: relative;
+		width: 550px;
+
+		@media (max-width: $screen-xs-max) {
+			width: 224px;
+		}
+
+		> div {
+			height: 180px;
+
+			@media (max-width: $screen-xs-max) {
+				height: 76px;
 			}
 		}
 
-		&.readonly li {
-			cursor: auto;
+		> p {
+			width: 100%;
+			color: $primary;
+			position: absolute;
+			bottom: -20px;
+			left: 0;
+
+			>span {
+				background-color: $white;
+				border-radius: 5px;
+				box-shadow: 0 0 10px fade-out($black, 0.5);
+				padding: 5px 15px;
+			}
+
+			.slash {
+				margin: 0 5px;
+				opacity: 0.4;
+			}
+
+			@media(max-width: $screen-xs-max) {
+				font-size: 0.8em;
+				position: static;
+				width: 100%;
+
+				>span {
+					display: block;
+					border-top-left-radius: 0;
+					border-top-right-radius: 0;
+				}
+			}
 		}
+	}
+
+	p.contact {
+		margin-top: 48px;
+
+		@media(max-height: 500px) {
+			margin-top: 20px;
+		}
+	}
+
+	.island {
+		margin-bottom: 20px;
+		text-align: left;
+
+		.name {
+			margin-top: 12px;
+			margin-bottom: 0;
+			word-wrap: break-word;
+		}
+
+		p {
+			margin-bottom: 5px;
+		}
+
+		a {
+			color: $gray-dark;
+
+			&:hover, &:focus {
+				color: $gray-darker;
+			}
+		}
+
+		>table {
+			font-size: 0.9em;
+			width: 100%;
+			border: 1px solid $white;
+			transition: border-color linear 0.3s;
+
+			&:hover {
+				border: 1px solid $gray;
+			}
+			
+			td {
+				vertical-align: top;
+				padding: 15px;
+
+				&:first-child {
+					width: 100px;
+				}
+			}
+		}
+	}
+
+	.skill {
+		@extend .island;
+
+		img {
+			max-width: none;
+			width: 80px;
+		}
+
+		>table {
+			.name {
+				font-size: 18px;
+				margin-top: 0;
+			}
+
+			star-rating ul {
+				margin-bottom: 10px;
+				margin-top: 6px;
+			}
+
+			.extras {
+				color: $gray-dark;
+				margin-bottom: 8px;
+			}
+
+			td:last-child {
+				height: 133px;
+			}
+		}
+	}
+
+	.work {
+		@extend .island;
+		padding-bottom: 10px;
+
+		.zoomIn {
+			cursor: zoom-in;
+		}
+
+		>div {
+			.name {
+				font-size: 20px;
+				margin-top: 18px;
+			}
+
+			.skill-icons {
+				margin-top: 10px;
+
+				img {
+					filter: grayscale(100%);
+					transition: 0.3s ease-in-out;
+					opacity: 0.5;
+				}
+
+				a:hover img {
+					filter: grayscale(0%);
+					opacity: 1;
+				}
+
+				&.row {
+					margin-left: -10px;
+					margin-right: -10px;
+
+					[class*='col-'] {
+						padding-left: 10px;
+						padding-right: 10px;
+					}
+				}
+			}
+		}
+	}
+
+	.masonry-brick {
+		opacity: 0;
+
+		&.loaded {
+			opacity: 1;
+		}
+	}
+
+	.row.col-bottom>div {
+		margin-bottom: 10px;
+	}
+
+	span.align-to-icon {
+		position: relative;
+		bottom: 5px;
+	}
+
+	.ng-enter {
+		position:relative;
+		left: 10px;
+		transition:0.3s linear all;
+		opacity:0;
+
+		&.ng-enter-active {
+			opacity:1;
+			left: 0;
+		}
+	}
+
+	.ng-move {
+		transition: 1s linear all;
+		opacity: .5;
+
+		&.ng-move-active {
+			opacity:1;
+		}
+	}
+
+	.ng-leave {
+		transition: .2s linear all;
+		opacity:1;
+
+		&.ng-leave-active {
+			opacity:0;
+		}
+	}
+
+	.ng-enter-stagger {
+		transition-delay: 0.04s;
+		transition-duration: 0s;
+	}
+}
+
+.rating {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	
+	li {
+		padding: 1px;
+		color: #ddd;
+		font-size: 16px;
+		list-style-type: none;
+		display: inline-block;
+		cursor: pointer;
+		&.filled {
+			color: #fd0; //#21568b
+		}
+	}
+
+	&.readonly li {
+		cursor: auto;
 	}
 }
