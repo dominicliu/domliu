@@ -1,9 +1,3 @@
-$aqua-dark: #18bc9c;
-$aqua-light: fade-out($aqua-dark, 0.3);
-
-@import 'bootstrap';
-@import 'bootflat';
-
 $white: #fff;
 $gray: #ccc;
 $gray-dark: #bbb;
@@ -18,6 +12,13 @@ $success-darker: #128f76;
 $info: #3498db;
 $warning: #f39c12;
 $danger: #e74c3c;
+
+$link-font-color: $success;
+$link-font-color-hover: lighten($success, 10%);
+$form-primary: $success;
+
+@import 'bootstrap';
+@import 'bootflat';
 
 @font-face {
 	font-family: 'Lato';
@@ -68,6 +69,10 @@ textarea {
 	textarea {
 		font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	}
+}
+
+.btn.btn-primary {
+	@include button-variant($black, $white, $gray)
 }
 
 body {
@@ -238,11 +243,22 @@ body {
 						margin-right: -10px;
 					}
 				}
+
+				@media(max-height: 430px) {
+					.carousel-caption,
+					.carousel-indicators {
+						display: none;
+					}
+				}
 			}
 		}
 
 		a {
 			transition: color 0.3s;
+
+			&.btn {
+				transition: none;
+			}
 		}
 
 		.outer {
@@ -262,6 +278,8 @@ body {
 			margin-left: auto;
 			margin-right: auto;
 			z-index: 9999;
+			pointer-events: auto;
+			width: 70%;
 		}
 
 		.top-offset {
@@ -305,14 +323,14 @@ body {
 			width: 550px;
 
 			@media (max-width: $screen-xs-max) {
-				width: 240px;
+				width: 224px;
 			}
 
 			> div {
 				height: 180px;
 
 				@media (max-width: $screen-xs-max) {
-					height: 87px;
+					height: 76px;
 				}
 			}
 
@@ -334,6 +352,26 @@ body {
 					margin: 0 5px;
 					opacity: 0.4;
 				}
+
+				@media(max-width: $screen-xs-max) {
+					font-size: 0.8em;
+					position: static;
+					width: 100%;
+
+					>span {
+						display: block;
+						border-top-left-radius: 0;
+						border-top-right-radius: 0;
+					}
+				}
+			}
+		}
+
+		p.contact {
+			margin-top: 48px;
+
+			@media(max-height: 500px) {
+				margin-top: 20px;
 			}
 		}
 
