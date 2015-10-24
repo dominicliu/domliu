@@ -265,7 +265,7 @@ main {
 		overflow: hidden;
 		position: relative;
 		width: 120px;
-		z-index: 999;
+		z-index: 2;
 
 		@media (max-width: $screen-xs-max) {
 			width: 80px;
