@@ -3,8 +3,6 @@ gulp = require 'gulp'
 plugins = require('gulp-load-plugins')()
 
 browserSync = undefined
-open = require 'open'
-Pageres = require 'pageres'
 path = require 'path'
 
 myPlumber = ->
@@ -117,6 +115,8 @@ gulp.task 'watch', ['serve', 'browser-sync', 'coffee', 'sass', 'vendorJs', 'vend
 	gulp.watch globs.skillImages, ['skillImages']
 
 gulp.task 'screenshots', (cb) ->
+	open = require 'open'
+	Pageres = require 'pageres'
 	argv = require('minimist')(process.argv.slice(2))
 	url = argv.url or 'localhost:3000'
 	pageres = new Pageres(delay: 3).src(url, [
